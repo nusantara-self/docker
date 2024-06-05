@@ -1,0 +1,90 @@
+version: '3.8'
+services:
+  cassandra:
+    image: 'cassandra:4.1'
+    container_name: cassandra
+    hostname: cassandra
+    restart: always
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - cassandra-logs:/var/log/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TheHive
+      - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
+      - CASSANDRA_USER=${CASSANDRA_USER}
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=${CASSANDRA_PASSWORD}
+      - HEAP_NEWSIZE=1280M
+      - MAX_HEAP_SIZE=1280M
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    networks:
+      - thehive-test-network
+    healthcheck: 
+      test: cqlsh -u cassandra -p ${CASSANDRA_PASSWORD} cassandra -e 'show host' > /dev/null 2&>1 || exit 1
+      interval: 2s
+      timeout: 1s
+      retries: 3
+      start_period: 60s
+  elasticsearch:
+    image: 'elasticsearch:7.17.19'
+    container_name: elasticsearch
+    hostname: elasticsearch
+    restart: always
+    environment:
+      - http.host=0.0.0.0
+      - discovery.type=single-node
+      - cluster.name=hive
+      - thread_pool.search.queue_size=100000
+      - thread_pool.write.queue_size=100000
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+      - elasticsearch-logs:/usr/share/elasticsearch/logs
+    networks:
+      - thehive-test-network
+    healthcheck:
+      test: curl -s -f elasticsearch:9200/_cat/health > /dev/null  || exit 1
+      interval: 2s
+      timeout: 1s
+      retries: 3
+      start_period: 60s
+  thehive:
+    image: 'strangebee/thehive:5.3'
+    container_name: thehive
+    hostname: thehive
+    mem_limit: 1664m
+    environment:
+      - MAX_HEAP_SIZE=1280M
+      - HEAP_NEWSIZE=1280M
+      - JVM_OPTS="-XX:MaxMetaspaceSize=256m"
+    restart: always
+    ports:
+      - '0.0.0.0:9000:9000'
+    volumes:
+      - ./thehive/config:/etc/thehive
+      - ./thehive/log:/var/log/thehive
+      - ./thehive/data/files:/opt/thp/thehive/files
+    command: '--no-config --no-config-secret'
+    networks:
+      - thehive-test-network
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      cassandra:
+        condition: service_healthy
+volumes:
+  cassandra-data:
+  cassandra-logs:
+  elasticsearch-data:
+  elasticsearch-logs:
+networks:
+  thehive-test-network:
