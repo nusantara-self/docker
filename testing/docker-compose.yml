@@ -22,7 +22,7 @@ services:
     networks:
       - thehive-test-network
     healthcheck: 
-      test: cqlsh -u cassandra -p ${CASSANDRA_PASSWORD} cassandra -e 'show host' > /dev/null 2&>1 || exit 1
+      test: cqlsh -u cassandra -p cassandra cassandra -e 'show host' > /dev/null 2&>1 || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
