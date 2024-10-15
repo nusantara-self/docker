@@ -3,7 +3,7 @@ services:
     image: 'cassandra:4.1'
     container_name: cassandra
     hostname: cassandra
-    restart: always
+    restart: unless-stopped
     volumes:
       - cassandra-data:/var/lib/cassandra
       - cassandra-logs:/var/log/cassandra
@@ -30,7 +30,7 @@ services:
     image: 'elasticsearch:7.17.19'
     container_name: elasticsearch
     hostname: elasticsearch
-    restart: always
+    restart: unless-stopped
     environment:
       - http.host=0.0.0.0
       - discovery.type=single-node
@@ -74,7 +74,7 @@ services:
           -Xmx1000m
           -XX:MaxMetaspaceSize=450m
           -XX:ReservedCodeCacheSize=250m
-    restart: always
+    restart: unless-stopped
     ports:
       - '0.0.0.0:9000:9000'
     volumes:
