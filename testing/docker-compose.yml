@@ -4,14 +4,14 @@ services:
     container_name: cassandra
     hostname: cassandra
     restart: unless-stopped
-    volumes:
-      - cassandra-data:/var/lib/cassandra
-      - cassandra-logs:/var/log/cassandra
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
       - HEAP_NEWSIZE=1280M
       - MAX_HEAP_SIZE=200M
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - cassandra-logs:/var/log/cassandra
     deploy:
       resources:
         limits:
@@ -42,13 +42,13 @@ services:
       - bootstrap.memory_lock=true
       - xpack.security.enabled=false
       - ES_JAVA_OPTS=-Xms1G -Xmx1G
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+      - elasticsearch-logs:/usr/share/elasticsearch/logs
     ulimits:
       nofile:
         soft: 65536
         hard: 65536
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-      - elasticsearch-logs:/usr/share/elasticsearch/logs
     deploy:
       resources:
         limits:
@@ -67,35 +67,36 @@ services:
     image: 'strangebee/thehive:5.3'
     container_name: thehive
     hostname: thehive
-    mem_limit: 1664m
+    restart: unless-stopped
+    command: '--no-config --no-config-secret'
     environment:
       - MAX_HEAP_SIZE=1280M
       - HEAP_NEWSIZE=1280M
-      - |
-        JAVA_OPTS=
-          -Xms1000m
-          -Xmx1000m
-          -XX:MaxMetaspaceSize=450m
-          -XX:ReservedCodeCacheSize=250m
-    restart: unless-stopped
-    ports:
-      - '0.0.0.0:9000:9000'
+      - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
     volumes:
       - ./thehive/config:/etc/thehive
       - ./thehive/log:/var/log/thehive
       - ./thehive/data/files:/opt/thp/thehive/files
-    command: '--no-config --no-config-secret'
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    memswap_limit: 2G
     networks:
       - thehive-test-network
+    ports:
+      - '0.0.0.0:9000:9000'
     depends_on:
       elasticsearch:
         condition: service_healthy
       cassandra:
         condition: service_healthy
+
 volumes:
   cassandra-data:
   cassandra-logs:
   elasticsearch-data:
   elasticsearch-logs:
+
 networks:
   thehive-test-network:
