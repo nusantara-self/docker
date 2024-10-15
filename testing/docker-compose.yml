@@ -57,11 +57,12 @@ services:
     networks:
       - thehive-test-network
     healthcheck:
-      test: curl -s -f elasticsearch:9200/_cat/health > /dev/null  || exit 1
+      test: ["CMD-SHELL", "curl -s -f elasticsearch:9200/_cat/health || exit 1"]
+      start_period: 30s
       interval: 2s
       timeout: 1s
       retries: 3
-      start_period: 60s
+
   thehive:
     image: 'strangebee/thehive:5.3'
     container_name: thehive
