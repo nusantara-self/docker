@@ -10,22 +10,24 @@ services:
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
-      - CASSANDRA_PASSWORD_SEEDER=yes
       - HEAP_NEWSIZE=1280M
       - MAX_HEAP_SIZE=200M
     deploy:
       resources:
         limits:
           memory: 2G
-    memswap_limit: 2G   # Add this line to prevent swap usage
+    # Prevent swap https://docs.docker.com/engine/containers/resource_constraints/#prevent-a-container-from-using-swap
+    memswap_limit: 2G
     networks:
       - thehive-test-network
     healthcheck:
-      test: cqlsh -u cassandra -p cassandra cassandra -e 'show host' > /dev/null 2&>1 || exit 1
+      # Waiting for cqlsh command to succeed to make sure Cassandra is ready
+      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
+      start_period: 30s
       interval: 2s
       timeout: 1s
       retries: 3
-      start_period: 60s
+
   elasticsearch:
     image: 'elasticsearch:7.17.19'
     container_name: elasticsearch
@@ -51,7 +53,7 @@ services:
       resources:
         limits:
           memory: 2G
-    memswap_limit: 2G  # Add this line to prevent swap usage
+    memswap_limit: 2G
     networks:
       - thehive-test-network
     healthcheck:
