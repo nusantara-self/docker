@@ -1,0 +1,682 @@
+2024-10-18 16:21:50,764 [INFO] from org.reflections.Reflections in main - Reflections took 103 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:21:50,788 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:21:50,790 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:21:50,798 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:21:50,798 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:21:50,798 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:21:50,798 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:21:50,798 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:21:51,799 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:21:57,536 [INFO] from org.reflections.Reflections in main - Reflections took 223 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:21:57,555 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:21:57,557 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:21:57,563 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:21:57,563 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:21:57,563 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:21:57,563 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:21:57,563 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:21:58,793 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:22:02,736 [INFO] from org.reflections.Reflections in main - Reflections took 107 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:02,748 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:02,750 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:02,755 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:02,756 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:02,756 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:02,756 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:02,756 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:03,520 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:22:07,555 [INFO] from org.reflections.Reflections in main - Reflections took 69 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:07,566 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:07,568 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:07,574 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:07,574 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:07,574 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:07,574 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:07,574 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:08,210 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:22:12,022 [INFO] from org.reflections.Reflections in main - Reflections took 84 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:12,032 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:12,034 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:12,035 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:12,040 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:12,040 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:12,041 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:12,041 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:12,041 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:12,555 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:22:17,026 [INFO] from org.reflections.Reflections in main - Reflections took 83 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:17,041 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:17,043 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:17,044 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:17,044 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:17,044 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:17,044 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:17,045 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:17,045 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:17,045 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:17,045 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:17,051 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:17,052 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:17,052 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:17,052 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:17,052 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:17,601 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-6 - Slf4jLogger started
+2024-10-18 16:22:23,693 [INFO] from org.reflections.Reflections in main - Reflections took 83 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:23,708 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:23,711 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:23,712 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:23,712 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:23,718 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:23,718 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:23,718 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:23,718 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:23,718 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:24,342 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-5 - Slf4jLogger started
+2024-10-18 16:22:33,874 [INFO] from org.reflections.Reflections in main - Reflections took 72 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:33,885 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:33,888 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:33,889 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:33,895 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:33,895 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:33,895 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:33,895 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:33,895 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:34,378 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-4 - Slf4jLogger started
+2024-10-18 16:22:50,680 [INFO] from org.reflections.Reflections in main - Reflections took 133 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:22:50,694 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:22:50,697 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:22:50,702 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:22:50,703 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:22:50,703 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:22:50,703 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:22:50,703 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:22:51,300 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-4 - Slf4jLogger started
+2024-10-18 16:23:20,293 [INFO] from org.reflections.Reflections in main - Reflections took 91 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:23:20,304 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:23:20,307 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:23:20,307 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:23:20,307 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:23:20,308 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:23:20,314 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:23:20,314 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:23:20,314 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:23:20,314 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:23:20,315 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:23:20,831 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-4 - Slf4jLogger started
+2024-10-18 16:23:44,432 [INFO] from org.reflections.Reflections in main - Reflections took 81 ms to scan 2 urls, producing 102 keys and 701 values
+2024-10-18 16:23:44,444 [INFO] from module in main - Loading model class org.elastic4play.services.AttachmentModel
+2024-10-18 16:23:44,447 [INFO] from module in main - Loading model class org.thp.cortex.models.JobModel
+2024-10-18 16:23:44,447 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerModel
+2024-10-18 16:23:44,447 [INFO] from module in main - Loading model class org.thp.cortex.models.ArtifactModel
+2024-10-18 16:23:44,448 [INFO] from module in main - Loading model class org.thp.cortex.models.ReportModel
+2024-10-18 16:23:44,448 [INFO] from module in main - Loading model class org.thp.cortex.models.OrganizationModel
+2024-10-18 16:23:44,448 [INFO] from module in main - Loading model class org.thp.cortex.models.WorkerConfigModel
+2024-10-18 16:23:44,448 [INFO] from module in main - Loading model class org.thp.cortex.models.AuditModel
+2024-10-18 16:23:44,448 [INFO] from module in main - Loading model class org.thp.cortex.models.UserModel
+2024-10-18 16:23:44,449 [INFO] from module in main - Loading model class org.elastic4play.services.DBListModel
+2024-10-18 16:23:44,456 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.LdapAuthSrv
+2024-10-18 16:23:44,457 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.OAuth2Srv
+2024-10-18 16:23:44,457 [INFO] from module in main - Loading authentication module class org.elastic4play.services.auth.ADAuthSrv
+2024-10-18 16:23:44,458 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.KeyAuthSrv
+2024-10-18 16:23:44,458 [INFO] from module in main - Loading authentication module class org.thp.cortex.services.LocalAuthSrv
+2024-10-18 16:23:45,007 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-4 - Slf4jLogger started
+2024-10-18 16:23:45,837 [WARN] from org.thp.cortex.services.WorkerSrv in application-akka.actor.default-dispatcher-5 - Worker path (/opt/thp_data/cortexneurons/analyzers) is not found
+java.net.MalformedURLException: no protocol: /opt/thp_data/cortexneurons/analyzers
+	at java.base/java.net.URL.<init>(URL.java:645)
+	at java.base/java.net.URL.<init>(URL.java:541)
+	at java.base/java.net.URL.<init>(URL.java:488)
+	at org.thp.cortex.services.WorkerSrv.$anonfun$scan$21(WorkerSrv.scala:200)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+2024-10-18 16:23:45,837 [WARN] from org.thp.cortex.services.WorkerSrv in application-akka.actor.default-dispatcher-8 - Worker path (/opt/thp_data/cortexneurons/responders) is not found
+java.net.MalformedURLException: no protocol: /opt/thp_data/cortexneurons/responders
+	at java.base/java.net.URL.<init>(URL.java:645)
+	at java.base/java.net.URL.<init>(URL.java:541)
+	at java.base/java.net.URL.<init>(URL.java:488)
+	at org.thp.cortex.services.WorkerSrv.$anonfun$scan$21(WorkerSrv.scala:200)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+2024-10-18 16:23:46,527 [INFO] from org.thp.cortex.services.DockerJobRunnerSrv in main - Docker is available:
+Info{architecture=x86_64, clusterStore=null, cgroupDriver=systemd, containers=8, containersRunning=4, containersStopped=4, containersPaused=0, cpuCfsPeriod=true, cpuCfsQuota=true, debug=false, dockerRootDir=/mnt/jleonard/lib_docker, storageDriver=overlay2, driverStatus=[[Backing Filesystem, extfs], [Supports d_type, true], [Using metacopy, false], [Native Overlay Diff, false], [userxattr, true]], executionDriver=null, experimentalBuild=false, httpProxy=, httpsProxy=, id=328c4c60-7493-4ebf-94cc-d1009771607d, ipv4Forwarding=true, images=25, indexServerAddress=https://index.docker.io/v1/, initPath=null, initSha1=null, kernelMemory=null, kernelVersion=6.2.16-20-bpo11-pve, labels=[], memTotal=25266487296, memoryLimit=true, cpus=4, eventsListener=2, fileDescriptors=67, goroutines=99, name=lab-ct-jleonard, noProxy=, oomKillDisable=false, operatingSystem=Ubuntu 22.04.4 LTS, osType=linux, plugins=Plugins{volumes=[local], networks=[bridge, host, ipvlan, macvlan, null, overlay]}, registryConfig=RegistryConfig{indexConfigs={docker.io=IndexConfig{name=docker.io, mirrors=[], secure=true, official=true}}, insecureRegistryCidrs=[127.0.0.0/8]}, serverVersion=25.0.3, swapLimit=true, swarm=SwarmInfo{cluster=null, controlAvailable=false, error=, localNodeState=inactive, nodeAddr=, nodeId=, nodes=null, managers=null, remoteManagers=null}, systemStatus=[], systemTime=Fri Oct 18 16:23:46 UTC 2024}
+2024-10-18 16:23:46,539 [WARN] from org.thp.cortex.services.JobRunnerSrv in main - The package cortexutils for python hasn't been found
+2024-10-18 16:23:46,540 [WARN] from org.thp.cortex.services.JobRunnerSrv in main - The package cortexutils for python2 hasn't been found
+2024-10-18 16:23:46,540 [WARN] from org.thp.cortex.services.JobRunnerSrv in main - The package cortexutils for python3 hasn't been found
+2024-10-18 16:23:46,634 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in main - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:23:46,786 [INFO] from play.api.Play in main - Application started (Prod) (no global state)
+2024-10-18 16:23:46,902 [INFO] from org.thp.cortex.services.WorkerSrv in application-akka.actor.default-dispatcher-9 - New worker list:
+
+	RiskIQ_Certificates 1.0
+	IPVoid 1.0
+	SEKOIAIntelligenceCenter_Indicators 1.0
+	RiskIQ_Projects 1.0
+	Shuffle 1.0
+	SEKOIAIntelligenceCenter_Context 1.0
+	HarfangLab-GetArtifactAll 1.0
+	RiskIQ_Cookies 1.0
+	HIBP_Query 2.0
+	CheckPoint_Unlock 1.0
+	ONYPHE_ASM 1.0
+	DNSSinkhole 1.0
+	DomainToolsIris_Investigate 1.0
+	ThreatMiner 1.0
+	MSDefender-UnisolateMachine 1.0
+	Autofocus_SearchJSON 1.0
+	MSDefender-PushIOC-Block 1.0
+	DomainTools_Reputation 2.0
+	PaloAltoCortexXDR_isolate 1.0
+	AMPforEndpoints_SCDAdd 1.0
+	MaxMind_GeoIP 4.0
+	Crowdstrike_Falcon_Custom_IOC_API 1.0
+	FileInfo 8.0
+	PaloAltoNGFW_block_external_user 1.0.0
+	SentinelOne_Hash_Blacklister 1.0
+	CheckPoint_Lock 1.0
+	FireEyeiSight 1.0
+	Malwares_GetReport 1.0
+	Mnemonic_pDNS_Public 3.0
+	SEKOIAIntelligenceCenter_Observables 1.0
+	THOR_Thunderstorm_ScanSample 0.3.1
+	Verifalia 1.0
+	ONYPHE_Vulnscan 1.0
+	RiskIQ_Articles 1.0
+	DomainTools_Risk 2.0
+	EchoTrail 1.0
+	PassiveTotal_Osint 2.0
+	IP-API 1.0
+	CIRCLPassiveDNS 2.0
+	CyberChef_FromHex 1.0
+	PaloAltoNGFW_block_port_for_external_communication 2.0.0
+	HarfangLab_SearchDriverByFileName 1.0
+	PassiveTotal_Passive_Dns 2.1
+	Shodan_Host 1.0
+	SendGrid 1.0
+	HarfangLab_SearchDriverByHash 1.0
+	DomainTools_WhoisLookupUnparsed 2.0
+	Hashdd_Detail 2.0
+	RiskIQ_Resolutions 1.0
+	PassiveTotal_Host_Pairs 2.0
+	Hunterio_DomainSearch 1.0
+	CyberChef_FromCharCode 1.0
+	MISPWarningLists 2.0
+	Gmail_BlockDomain 1.0
+	DomainTools_ReverseIPWhois 2.0
+	AbuseIPDB 1.0
+	TorProject 1.0
+	RecordedFuture 2.0
+	HarfangLab-GetStartupFiles 1.0
+	Redmine_Issue 1.0
+	CIRCLPassiveSSL 2.0
+	Inoitsu 1.0
+	Fortiguard_URLCategory 2.1
+	Splunk_Search_User_Agent 3.0
+	RiskIQ_HostpairParents 1.0
+	Yara 2.0
+	VirusTotal_Scan 3.1
+	HarfangLab-SearchHash 1.0
+	EmergingThreats_DomainInfo 1.0
+	DNSDB_DomainName 2.0
+	PhishTank_CheckURL 2.1
+	DNS-RPZ 1.0
+	MailIncidentStatus 1.0
+	ONYPHE_Search 1.0
+	PaloAltoNGFW_block_internal_domain 2.0.0
+	StamusNetworks_HostID 1.0
+	IPinfo_Hosted_Domains 1.0
+	RiskIQ_Subdomains 1.0
+	EmlParser 2.1
+	SpamhausDBL 1.0
+	SophosIntelix_GetReport 0.3
+	PassiveTotal_Trackers 2.0
+	ThreatResponse 1.0
+	VirusTotal_GetReport 3.1
+	Gmail_BlockSender 1.0
+	Maltiverse_Report 1.0
+	HarfangLab-GetPersistence 1.0
+	SophosIntelix_Submit_Dynamic 0.1
+	HarfangLab-SearchDestinationIP 1.0
+	MSDefenderOffice365_unblock 1.0
+	BackscatterIO_GetObservations 1.0
+	OTXQuery 2.0
+	Investigate_Sample 1.0
+	PaloAltoNGFW_unblock_port_for_internal_communication 1.0.0
+	MetaDefenderCloud_Reputation 1.0
+	Autofocus_SearchIOC 1.0
+	Test 1.0
+	Splunk_Search_Mail_Email 3.0
+	CheckPhish 1.0
+	Patrowl_GetReport 1.0
+	NSRL 1.0
+	AMPforEndpoints_MoveGUID 1.0
+	RT4-CreateTicket 1.0
+	PhishingInitiative_Scan 1.0
+	Mailer 1.0
+	RiskIQ_Summary 1.0
+	C1fApp 1.0
+	Diario_Scan 1.0
+	MSDefenderOffice365_block 1.0
+	Zscaler 1.3
+	OpenCTI_SearchObservables 2.0
+	Nessus 2.0
+	KnowBe4 1.0
+	SecurityTrails_Passive_DNS 1.0
+	Cylance 1.0
+	SentinelOne_DeepVisibility_DNSQuery 1.0
+	HarfangLab-GetSessions 1.0
+	Virusshare 2.0
+	HarfangLab-GetScheduledTasks 1.0
+	Velociraptor_Flow 0.1
+	DomainTools_ReverseIP 2.0
+	Crowdsec_Analyzer 1.0
+	Yeti 1.0
+	StaxxSearch 1.0
+	PaloAltoNGFW_unblock_external_domain 1.0.0
+	SinkDB 1.1
+	PaloAltoNGFW_unblock_external_IP_address 1.0.0
+	MalwareBazaar 1.0
+	DomainToolsIris_AddRiskyDNSTag 1.0
+	Robtex_Forward_PDNS_Query 1.0
+	CheckPhish_Submit 1.0
+	RiskIQ_Services 1.0
+	HarfangLab-GetDrivers 1.0
+	HarfangLab-GetWMI 1.0
+	WOT_Lookup 2.0
+	JoeSandbox_File_Analysis_Inet 3.0
+	RiskIQ_Whois 1.0
+	JoeSandbox_File_Analysis_Noinet 3.0
+	HarfangLab-GetPrefetches 1.0
+	Elasticsearch_Analysis 1.0
+	Splunk_Search_Hash 3.0
+	Autofocus_GetSampleAnalysis 1.0
+	HarfangLab-KillProcess 1.0
+	Virustotal_Downloader 0.1
+	DuoUnlockUserAccount 1.0
+	PaloAltoNGFW_unblock_internal_user 1.0.0
+	EmergingThreats_IPInfo 1.0
+	Shodan_ReverseDNS 1.0
+	Shodan_Host_History 1.0
+	HarfangLab-GetServices 1.0
+	Wazuh 1.0
+	PassiveTotal_Whois_Details 2.0
+	BitcoinAbuse 1.0
+	Urlscan.io_Search 0.1.1
+	Jupyter_Run_Notebook_Responder 1.0
+	CIRCLHashlookup 1.1
+	PaloAltoNGFW_block_external_IP_address 2.0.0
+	DomainTools_WhoisLookup 2.0
+	PaloAltoNGFW_block_internal_IP_address 2.0.0
+	HarfangLab-GetArtifactRamdump 1.0
+	GRR 0.1
+	Cyberprotect_ThreatScore 3.0
+	PaloAltoNGFW_block_external_domain 2.0.0
+	ZEROFOX_Close_alert 1.0
+	Minemeld 1.0
+	PassiveTotal_Malware 2.0
+	DomainTools_ReverseNameServer 2.0
+	IntezerCommunity 1.0
+	DNSDB_IPHistory 2.0
+	Ldap_Query 2.0
+	PaloAltoNGFW_unblock_internal_domain 1.0.0
+	HarfangLab-IsolateHost 1.0
+	GoogleSafebrowsing 2.0
+	PassiveTotal_Enrichment 2.0
+	PayloadSecurity_File_Analysis 1.0
+	Triage 1.0
+	Msg_Parser 3.0
+	PaloAltoWildFire 1.0
+	DomainMailSPFDMARC_Analyzer 1.1
+	PassiveTotal_Unique_Resolutions 2.0
+	Splunk_Search_User 3.0
+	RiskIQ_PushArtifactToProject 1.0
+	CuckooSandbox_Url_Analysis 1.2
+	BackscatterIO_Enrichment 1.0
+	DomainTools_ReverseWhois 2.0
+	SophosIntelix_Submit_Static 0.1
+	Threatcrowd 1.0
+	Umbrella_Blacklister 1.1
+	ZEROFOX_Takedown_request 1.0
+	CyberCrime-Tracker 1.0
+	Gmail_DeleteMessage 1.0
+	EmailRep 1.0
+	KasperskyThreatIntelligencePortal 1.0
+	URLhaus 2.0
+	MISP 2.1
+	TeamCymruMHR 1.0
+	DShield_lookup 1.0
+	EmergingThreats_MalwareInfo 1.0
+	StopForumSpam 1.0
+	DomainTools_HostingHistory 2.0
+	CyberChef_FromBase64 1.0
+	VirusTotal_Rescan 3.1
+	Abuse_Finder 3.0
+	Investigate_Categorization 1.0
+	HarfangLab-GetArtifactMFT 1.0
+	HarfangLab-SearchSourceIP 1.0
+	HarfangLab-GetPipes 1.0
+	SecurityTrails_Whois 1.0
+	DomainTools_WhoisHistory 2.0
+	VirusTotal_DownloadSample 3.1
+	MetaDefenderCloud_Scan 1.0
+	PassiveTotal_Ssl_Certificate_History 2.0
+	HarfangLab-GetArtifactUSN 1.0
+	HarfangLab-GetArtifactPrefetch 1.0
+	Splunk_Search_Other 3.0
+	Malpedia 1.0
+	ONYPHE_Summary_API 1.1
+	MetaDefenderCore_Scan 1.0
+	Splunk_Search_Registry 3.0
+	RiskIQ_Malware 1.0
+	Crt_sh_Transparency_Logs 1.0
+	PaloAltoCortexXDR_scan 1.0
+	IPinfo_Details 1.0
+	CERTatPassiveDNS 2.0
+	Urlscan.io_Scan 0.1.0
+	RiskIQ_Components 1.0
+	HarfangLab-GetNetworkShares 1.0
+	Gatewatcher_CTI 1.0
+	DomainToolsIris_CheckMaliciousTags 1.0
+	ProofPoint_Lookup 1.0
+	PayloadSecurity_Url_Analysis 1.0
+	HarfangLab-GetArtifactLogs 1.0
+	MSDefender-FullVirusscan 1.0
+	Shodan_DNSResolve 1.0
+	Splunk_Search_Mail_Subject 3.0
+	VMRay 4.1
+	GoogleDNS_resolve 1.0.0
+	DomainToolsIris_Pivot 1.0
+	MetaDefenderCloud_GetReport 1.0
+	FalconSandbox 1.0
+	OpenCTI_SearchExactObservable 2.0
+	Hipposcore 2.0
+	Shodan_InfoDomain 1.0
+	CuckooSandbox_File_Analysis_Inet 1.2
+	HarfangLab-GetArtifactHives 1.0
+	DNS_Lookingglass 1.0
+	Jupyter_Run_Notebook_Analyzer 1.0
+	GoogleVisionAPI_WebDetection 1.0.0
+	Valhalla_GetRuleMatches 0.3.1
+	TalosReputation 1.0
+	RiskIQ_Trackers 1.0
+	Vulners_CVE 1.0
+	Splunk_Search_IP 3.0
+	TorBlutmagie 1.0
+	SpamAssassin 1.0
+	Splunk_Search_Domain_FQDN 3.0
+	MSDefender-IsolateMachine 1.0
+	RiskIQ_Reputation 1.0
+	FireHOLBlocklists 2.0
+	Vulners_IOC 1.0
+	NERD 1.0
+	RiskIQ_Artifacts 1.0
+	ThreatGrid 1.0
+	HarfangLab-GetBinary 1.0
+	HarfangLab-UnisolateHost 1.0
+	Robtex_Reverse_PDNS_Query 1.0
+	Gmail_UnblockDomain 1.0
+	PassiveTotal_Ssl_Certificate_Details 2.0
+	PaloAltoNGFW_block_internal_user 1.0.0
+	AMPforEndpoints_IsolationStart 1.0
+	Hashdd_Status 2.0
+	PaloAltoNGFW_unblock_port_for_external_communication 1.0.0
+	PaloAltoCortexXDR_unisolate 1.0
+	HarfangLab-GetArtifactFilesystem 1.0
+	PaloAltoNGFW_unblock_internal_IP_address 1.0.0
+	DNSDB_NameHistory 2.0
+	PhishingInitiative_Lookup 2.0
+	AMPforEndpoints_IsolationStop 1.0
+	SoltraEdge 1.0
+	Pulsedive_GetIndicator 1.0
+	QRadar_Auto_Closing_Offense 1.0
+	IBMXForce_Lookup 1.0
+	Gmail_UnblockSender 1.0
+	Splunk_Search_URL_URI_Path 3.0
+	RiskIQ_HostpairChildren 1.0
+	IVRE 1.0
+	MSDefender-PushIOC-Alert 1.0
+	JoeSandbox_Url_Analysis 2.0
+	HarfangLab-DumpProcess 1.0
+	GreyNoise 3.1
+	Censys 1.0
+	CISMCAP 1.0
+	Malwares_Scan 1.0
+	Robtex_IP_Query 1.0
+	HippoMore 2.0
+	PaloAltoNGFW_unblock_external_user 1.0.0
+	HybridAnalysis_GetReport 1.0
+	DuoLockUserAccount 1.0
+	AMPforEndpoints_SCDRemove 1.0
+	ClamAV_FileInfo 1.1
+	PaloAltoNGFW_block_port_for_internal_communication 2.0.0
+	HarfangLab-GetRunKeys 1.0
+	ForcepointWebsensePing 1.0
+	Shodan_Search 2.0
+	Umbrella_Report 1.0
+	PassiveTotal_Components 2.0
+	AzureTokenRevoker 1.0
+	MetaDefenderCore_GetReport 1.0
+	Diario_GetReport 1.0
+	MalwareClustering_Search 1.0
+	Mnemonic_pDNS_Closed 3.0
+	Splunk_Search_File_Filename 3.0
+	HarfangLab-GetProcesses 1.0
+	UnshortenLink 1.2
+	Onyphe_Summary 1.0
+	AnyRun_Sandbox_Analysis 1.0
+	HarfangLab-GetArtifactEvtx 1.0
+
+2024-10-18 16:23:46,915 [ERROR] from org.elastic4play.database.DBConfiguration in application-akka.actor.default-dispatcher-4 - ElasticSearch request failure: POST /cortex_6/_search?scroll=60000ms
+{"seq_no_primary_term":"true","query":{"bool":{"must":[{"term":{"relations":{"value":"job"}}},{"term":{"status":{"value":"Waiting"}}}]}},"from":0,"sort":[{"_doc":{"order":"desc"}}]}
+ => ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,List(ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,null,None,None,None,List())),None,None,None,List())
+2024-10-18 16:23:46,920 [WARN] from org.elastic4play.database.SearchWithScroll in application-akka.actor.default-dispatcher-9 - Search error
+org.elastic4play.IndexNotFoundException$: null
+	at org.elastic4play.IndexNotFoundException$.<clinit>(Errors.scala)
+	at org.elastic4play.database.DBConfiguration.$anonfun$execute$2(DBConfiguration.scala:155)
+	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:307)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:41)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+2024-10-18 16:23:47,094 [INFO] from play.core.server.AkkaHttpServer in main - Enabling HTTP/2 on Akka HTTP server...
+2024-10-18 16:23:47,094 [INFO] from play.core.server.AkkaHttpServer in main - Listening for HTTP on /0.0.0.0:9001
+2024-10-18 16:23:50,899 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 10.30.5.13 GET /index.html took 106ms and returned 200 1254 bytes
+2024-10-18 16:23:51,001 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-6 - 10.30.5.13 GET /assets/styles/css/app.c1f34f54314be47309d2.css took 3ms and returned 200 11370408 bytes
+2024-10-18 16:23:51,047 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-9 - 10.30.5.13 GET /app.c1f34f54314be47309d2.js took 2ms and returned 200 2754871 bytes
+2024-10-18 16:23:51,887 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-9 - 10.30.5.13 GET /api/status took 6ms and returned 200 278 bytes
+2024-10-18 16:23:51,910 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 GET /favicon-32x32.png took 2ms and returned 200 1728 bytes
+2024-10-18 16:23:52,493 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:23:56,495 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 POST /api/login took 35ms and returned 520 0 bytes
+2024-10-18 16:23:56,571 [ERROR] from org.elastic4play.database.DBConfiguration in application-akka.actor.default-dispatcher-5 - ElasticSearch request failure: POST /cortex_6/_search
+{"query":{"match":{"relations":{"query":"user"}}},"size":0}
+ => ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,List(ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,null,None,None,None,List())),None,None,None,List())
+2024-10-18 16:23:56,594 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 POST /api/stream took 33ms and returned 200 10 bytes
+2024-10-18 16:23:56,650 [ERROR] from org.elastic4play.database.DBConfiguration in application-akka.actor.default-dispatcher-7 - ElasticSearch request failure: POST /cortex_6/_search
+{"query":{"match":{"relations":{"query":"user"}}},"size":0}
+ => ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,List(ElasticError(index_not_found_exception,no such index [cortex_6],Some(_na_),Some(cortex_6),None,null,None,None,None,List())),None,None,None,List())
+2024-10-18 16:24:00,168 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in application-akka.actor.default-dispatcher-4 - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:24:00,171 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in application-akka.actor.default-dispatcher-4 - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:24:00,201 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in application-akka.actor.default-dispatcher-4 - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:24:00,204 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in application-akka.actor.default-dispatcher-4 - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:24:00,206 [INFO] from com.sksamuel.elastic4s.http.JavaClient$ in application-akka.actor.default-dispatcher-4 - Creating HTTP client on http://elasticsearch:9200
+2024-10-18 16:24:00,209 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Create a new empty database
+2024-10-18 16:24:00,210 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrate database from version 0, add operations for version 2
+2024-10-18 16:24:00,213 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrate database from version 0, add operations for version 3
+2024-10-18 16:24:00,214 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrate database from version 0, add operations for version 4
+2024-10-18 16:24:00,214 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrate database from version 0, add operations for version 5
+2024-10-18 16:24:00,214 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrate database from version 0, add operations for version 6
+2024-10-18 16:24:02,039 [WARN] from org.elasticsearch.client.RestClient in I/O dispatcher 1 - request [PUT http://elasticsearch:9200/cortex_6?include_type_name=false] returned 1 warnings: [299 Elasticsearch-7.17.19-92f290e9537478f85ff3fe3ab39945c1a49a6c1a "[types removal] Using include_type_name in create index requests is deprecated. The parameter will be removed in the next major version."]
+2024-10-18 16:24:02,045 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from sequence
+2024-10-18 16:24:02,208 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from artifact
+2024-10-18 16:24:02,209 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from audit
+2024-10-18 16:24:02,210 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from data
+2024-10-18 16:24:02,211 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from dblist
+2024-10-18 16:24:02,211 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from job
+2024-10-18 16:24:02,212 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from organization
+2024-10-18 16:24:02,213 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from report
+2024-10-18 16:24:02,213 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from user
+2024-10-18 16:24:02,214 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from worker
+2024-10-18 16:24:02,215 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-4 - Migrating 0 entities from workerConfig
+2024-10-18 16:24:02,512 [INFO] from org.elastic4play.services.MigrationSrv in application-akka.actor.default-dispatcher-5 - End of migration
+2024-10-18 16:24:02,513 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 POST /api/maintenance/migrate took 2354ms and returned 204 0 bytes
+2024-10-18 16:24:02,550 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-9 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:24:03,039 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-8 - 10.30.5.13 GET /api/stream/f6gTVjzMN6 took 6393ms and returned 200 701 bytes
+2024-10-18 16:24:03,241 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 POST /api/user/_search took 149ms and returned 200 
+2024-10-18 16:24:10,020 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 10.30.5.13 GET /api/stream/f6gTVjzMN6 took 6927ms and returned 200 2 bytes
+2024-10-18 16:24:10,087 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 10.30.5.13 GET /api/stream/f6gTVjzMN6 took 6ms and returned 401 74 bytes
+2024-10-18 16:24:10,371 [ERROR] from org.elastic4play.controllers.Authenticated in application-akka.actor.default-dispatcher-7 - Authentication failure:
+	session: AuthenticationError User session not found
+	pki: AuthenticationError Certificate authentication is not configured
+	key: AuthenticationError Authentication header not found
+	init: AuthenticationError Use of initial user is forbidden because users exist in database
+2024-10-18 16:24:10,371 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 10.30.5.13 POST /api/user took 6ms and returned 401 65 bytes
+2024-10-18 16:24:10,701 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 10.30.5.13 POST /api/user took 1877ms and returned 201 261 bytes
+2024-10-18 16:24:10,776 [ERROR] from org.elastic4play.controllers.Authenticated in application-akka.actor.default-dispatcher-7 - Authentication failure:
+	session: AuthenticationError User session not found
+	pki: AuthenticationError Certificate authentication is not configured
+	key: AuthenticationError Authentication header not found
+	init: AuthenticationError Use of initial user is forbidden because users exist in database
+2024-10-18 16:24:10,778 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 10.30.5.13 GET /api/user/current took 13ms and returned 401 65 bytes
+2024-10-18 16:24:10,839 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-6 - 10.30.5.13 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:24:12,613 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:24:22,679 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 192.168.16.5 GET /api/status took 4ms and returned 200 278 bytes
+2024-10-18 16:24:24,811 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 10.30.5.13 POST /api/login took 53ms and returned 200 52 bytes
+2024-10-18 16:24:25,324 [ERROR] from org.elastic4play.controllers.Authenticated in application-akka.actor.default-dispatcher-12 - Authentication failure:
+	session: AuthenticationError User session not found
+	pki: AuthenticationError Certificate authentication is not configured
+	key: AuthenticationError Authentication header not found
+	init: AuthenticationError Use of initial user is forbidden because users exist in database
+2024-10-18 16:24:25,325 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 10.30.5.13 GET /api/user/current took 6ms and returned 401 65 bytes
+2024-10-18 16:24:32,759 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:24:42,831 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:24:52,892 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-6 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:25:02,967 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-17 - 192.168.16.5 GET /api/status took 2ms and returned 200 278 bytes
+2024-10-18 16:25:13,029 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:25:23,095 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-8 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:25:33,157 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:25:43,216 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:25:53,281 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:26:03,327 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:26:13,381 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:26:23,442 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-4 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:26:33,490 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-12 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:26:43,526 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-4 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:26:53,590 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-9 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:27:03,641 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-6 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:27:13,690 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:27:23,746 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:27:33,794 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-5 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:27:43,850 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-8 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:27:53,902 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:28:03,955 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-17 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:28:14,018 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-17 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:28:24,086 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-17 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes
+2024-10-18 16:28:34,145 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-4 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:28:44,269 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-7 - 192.168.16.5 GET /api/status took 0ms and returned 200 278 bytes
+2024-10-18 16:28:54,323 [INFO] from org.thp.cortex.services.AccessLogFilter in application-akka.actor.default-dispatcher-8 - 192.168.16.5 GET /api/status took 1ms and returned 200 278 bytes

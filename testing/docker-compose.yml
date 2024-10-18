@@ -62,7 +62,7 @@ services:
       retries: 3
       start_period: 60s
   thehive:
-    image: 'strangebee/thehive:5.3'
+    image: 'strangebee/thehive:5.4'
     container_name: thehive
     hostname: thehive
     mem_limit: 1664m
@@ -100,7 +100,7 @@ services:
       - MAX_HEAP_SIZE=1280M
       - HEAP_NEWSIZE=1280M
       - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
-      - es_uri='http://elasticsearch:9200'
+      - es_uri=http://elasticsearch:9200
       - job_directory='/tmp/cortex-jobs'
     volumes:
       # Mounting docker socket in the container so that cortex can run jobs as containers
