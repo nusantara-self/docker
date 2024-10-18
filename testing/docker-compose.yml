@@ -109,7 +109,7 @@ services:
       - /tmp/cortex-jobs:/tmp/cortex-jobs
       - ./cortex/config/application.conf:/etc/cortex/application.conf
       - ./cortex/logs:/var/log/cortex
-      - ./cortex/config/cortexneurons:/opt/thp_data/cortexneurons
+      - ./cortex/cortexneurons:/opt/thp_data/cortexneurons
     deploy:
       resources:
         limits:
