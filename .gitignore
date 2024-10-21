@@ -1,1 +1,2 @@
-*.log
+# Log files created by applications in containers
+**/*.log
