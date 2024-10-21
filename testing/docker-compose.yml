@@ -114,7 +114,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       # Storing jobs under /tmp for now
       - /tmp/cortex-jobs:/tmp/cortex-jobs
-      - ./cortex/config/application.conf:/etc/cortex/application.conf
+      - ./cortex/config:/etc/cortex
       - ./cortex/logs:/var/log/cortex
       - ./cortex/neurons:/opt/thp_data/cortexneurons
     deploy:
