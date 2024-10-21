@@ -10,8 +10,8 @@ services:
       - HEAP_NEWSIZE=1280M
       - MAX_HEAP_SIZE=200M
     volumes:
-      - cassandra-data:/var/lib/cassandra
-      - cassandra-logs:/var/log/cassandra
+      - ./cassandra/data:/var/lib/cassandra
+      - ./cassandra/logs:/var/log/cassandra
     deploy:
       resources:
         limits:
@@ -43,8 +43,8 @@ services:
       - xpack.security.enabled=false
       - ES_JAVA_OPTS=-Xms1G -Xmx1G
     volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-      - elasticsearch-logs:/usr/share/elasticsearch/logs
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
     ulimits:
       nofile:
         soft: 65536
@@ -75,8 +75,8 @@ services:
       - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
     volumes:
       - ./thehive/config:/etc/thehive
-      - ./thehive/log:/var/log/thehive
-      - ./thehive/data/files:/opt/thp/thehive/files
+      - ./thehive/data:/opt/thp/thehive/files
+      - ./thehive/logs:/var/log/thehive
     deploy:
       resources:
         limits:
@@ -116,7 +116,7 @@ services:
       - /tmp/cortex-jobs:/tmp/cortex-jobs
       - ./cortex/config/application.conf:/etc/cortex/application.conf
       - ./cortex/logs:/var/log/cortex
-      - ./cortex/cortexneurons:/opt/thp_data/cortexneurons
+      - ./cortex/neurons:/opt/thp_data/cortexneurons
     deploy:
       resources:
         limits:
@@ -136,11 +136,6 @@ services:
       elasticsearch:
         condition: service_healthy
 
-volumes:
-  cassandra-data:
-  cassandra-logs:
-  elasticsearch-data:
-  elasticsearch-logs:
 
 networks:
   thehive-test-network:

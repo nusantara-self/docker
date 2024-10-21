@@ -1,2 +1,22 @@
-# Log files created by applications in containers
-**/*.log
+# Ignore folders used as docker bind by Cassandra container
+/*/cassandra/data/*
+/*/cassandra/logs/*
+
+# Ignore folders used as docker bind by Cortex container
+/*/cortex/logs/*
+/*/cortex/neurons/*
+
+# Ignore folders used as docker bind by ElasticSearch container
+/*/elasticsearch/data/*
+/*/elasticsearch/logs/*
+
+# Ignore folders used as docker bind by TheHive container
+/*/thehive/data/*
+/*/thehive/logs/*
+
+
+# Keep track of .gitkeep files to guarantee folder permissions are correct
+!/**/.gitkeep
+
+# Ignore .DS_Store files
+/**/.DS_Store
