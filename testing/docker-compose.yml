@@ -1,6 +1,6 @@
 services:
   cassandra:
-    image: 'cassandra:4.1'
+    image: "cassandra:${cassandra_image_version}"
     container_name: cassandra
     hostname: cassandra
     restart: unless-stopped
@@ -29,7 +29,7 @@ services:
       retries: 3
 
   elasticsearch:
-    image: 'elasticsearch:7.17.19'
+    image: "elasticsearch:${elasticsearch_image_version}"
     container_name: elasticsearch
     hostname: elasticsearch
     restart: unless-stopped
@@ -64,7 +64,7 @@ services:
       retries: 5
 
   thehive:
-    image: 'strangebee/thehive:5.4'
+    image: "strangebee/thehive:${thehive_image_version}"
     container_name: thehive
     hostname: thehive
     restart: unless-stopped
@@ -99,7 +99,7 @@ services:
         condition: service_healthy
 
   cortex:
-    image: 'thehiveproject/cortex:3.1.8-1'
+    image: "thehiveproject/cortex:${cortex_image_version}"
     container_name: cortex
     hostname: cortex
     restart: unless-stopped
