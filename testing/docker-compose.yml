@@ -20,7 +20,7 @@ services:
     # Prevent swap https://docs.docker.com/engine/containers/resource_constraints/#prevent-a-container-from-using-swap
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     healthcheck:
       # Waiting for cqlsh command to succeed to make sure Cassandra is ready
       test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
@@ -57,7 +57,7 @@ services:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     healthcheck:
       test: ["CMD-SHELL", "curl -s -f elasticsearch:9200/_cat/health || exit 1"]
       start_period: 40s
@@ -86,7 +86,7 @@ services:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     ports:
       - '0.0.0.0:9000:9000'
     healthcheck:
@@ -126,7 +126,7 @@ services:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     ports:
       - '0.0.0.0:9001:9001'
     healthcheck:
@@ -139,6 +139,5 @@ services:
       elasticsearch:
         condition: service_healthy
 
-
 networks:
-  thehive-test-network:
+  thehive-cortex-network:
