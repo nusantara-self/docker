@@ -4,6 +4,7 @@ services:
     container_name: cassandra
     hostname: cassandra
     restart: unless-stopped
+    user: ${UID}:${GID}
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
@@ -33,6 +34,7 @@ services:
     container_name: elasticsearch
     hostname: elasticsearch
     restart: unless-stopped
+    user: ${UID}:0
     environment:
       - http.host=0.0.0.0
       - discovery.type=single-node
@@ -69,6 +71,7 @@ services:
     hostname: thehive
     restart: unless-stopped
     command: '--no-config --no-config-secret'
+    user: ${UID}:${GID}
     environment:
       - MAX_HEAP_SIZE=1280M
       - HEAP_NEWSIZE=1280M
