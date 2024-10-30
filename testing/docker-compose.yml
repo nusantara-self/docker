@@ -4,14 +4,15 @@ services:
     container_name: cassandra
     hostname: cassandra
     restart: unless-stopped
+    user: ${UID}:${GID}
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
       - HEAP_NEWSIZE=1280M
       - MAX_HEAP_SIZE=200M
     volumes:
-      - cassandra-data:/var/lib/cassandra
-      - cassandra-logs:/var/log/cassandra
+      - ./cassandra/data:/var/lib/cassandra
+      - ./cassandra/logs:/var/log/cassandra
     deploy:
       resources:
         limits:
@@ -19,7 +20,7 @@ services:
     # Prevent swap https://docs.docker.com/engine/containers/resource_constraints/#prevent-a-container-from-using-swap
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     healthcheck:
       # Waiting for cqlsh command to succeed to make sure Cassandra is ready
       test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
@@ -33,6 +34,7 @@ services:
     container_name: elasticsearch
     hostname: elasticsearch
     restart: unless-stopped
+    user: ${UID}:0
     environment:
       - http.host=0.0.0.0
       - discovery.type=single-node
@@ -43,8 +45,8 @@ services:
       - xpack.security.enabled=false
       - ES_JAVA_OPTS=-Xms1G -Xmx1G
     volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-      - elasticsearch-logs:/usr/share/elasticsearch/logs
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
     ulimits:
       nofile:
         soft: 65536
@@ -55,7 +57,7 @@ services:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     healthcheck:
       test: ["CMD-SHELL", "curl -s -f elasticsearch:9200/_cat/health || exit 1"]
       start_period: 40s
@@ -69,21 +71,22 @@ services:
     hostname: thehive
     restart: unless-stopped
     command: '--no-config --no-config-secret'
+    user: ${UID}:${GID}
     environment:
       - MAX_HEAP_SIZE=1280M
       - HEAP_NEWSIZE=1280M
       - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
     volumes:
       - ./thehive/config:/etc/thehive
-      - ./thehive/log:/var/log/thehive
-      - ./thehive/data/files:/opt/thp/thehive/files
+      - ./thehive/data:/opt/thp/thehive/files
+      - ./thehive/logs:/var/log/thehive
     deploy:
       resources:
         limits:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     ports:
       - '0.0.0.0:9000:9000'
     healthcheck:
@@ -114,16 +117,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       # Storing jobs under /tmp for now
       - /tmp/cortex-jobs:/tmp/cortex-jobs
-      - ./cortex/config/application.conf:/etc/cortex/application.conf
+      - ./cortex/config:/etc/cortex
       - ./cortex/logs:/var/log/cortex
-      - ./cortex/cortexneurons:/opt/thp_data/cortexneurons
+      - ./cortex/neurons:/opt/thp_data/cortexneurons
     deploy:
       resources:
         limits:
           memory: 2G
     memswap_limit: 2G
     networks:
-      - thehive-test-network
+      - thehive-cortex-network
     ports:
       - '0.0.0.0:9001:9001'
     healthcheck:
@@ -136,11 +139,5 @@ services:
       elasticsearch:
         condition: service_healthy
 
-volumes:
-  cassandra-data:
-  cassandra-logs:
-  elasticsearch-data:
-  elasticsearch-logs:
-
 networks:
-  thehive-test-network:
+  thehive-cortex-network:
