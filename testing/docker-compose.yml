@@ -111,15 +111,16 @@ services:
       - HEAP_NEWSIZE=1280M
       - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
       - es_uri=http://elasticsearch:9200
-      - job_directory='/tmp/cortex-jobs'
+      - job_directory=/tmp/cortex-jobs
+      - docker_job_directory=${cortex_docker_job_directory}
     volumes:
       # Mounting docker socket in the container so that cortex can run jobs as containers
       - /var/run/docker.sock:/var/run/docker.sock
       # Storing jobs under /tmp for now
-      - /tmp/cortex-jobs:/tmp/cortex-jobs
-      - ./cortex/config:/etc/cortex
+      - ./cortex/cortex-jobs:/tmp/cortex-jobs
+      - ./cortex/config:/etc/cortex:ro
       - ./cortex/logs:/var/log/cortex
-      - ./cortex/neurons:/opt/thp_data/cortexneurons
+      - ./cortex/neurons:/opt/cortexneurons
     deploy:
       resources:
         limits:

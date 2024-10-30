@@ -44,9 +44,8 @@ Each Compose file runs Elasticsearch, Cassandra and TheHive.
 For testing purpose:
 
 1. Copy the content of the folder `testing` on your server,
-2. Update the `docker-compose.yml` to suit your requirements,
-3. Update `./thehive/config/secret.conf` with a secret key
-4. Run:
+2. Run `bash ./scripts/init.sh` to generate .env file and prepare the environment
+3. Run:
 
     ```bash
     docker compose up
