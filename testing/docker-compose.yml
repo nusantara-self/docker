@@ -168,5 +168,32 @@ services:
       com.strangebee.version: "${cortex_image_version}"
       com.strangebee.dependency: "elasticsearch"
 
+  nginx:
+    image: "nginx:${nginx_image_version}"
+    container_name: nginx
+    hostname: nginx
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: "${nginx_server_name}"
+      NGINX_SSL_TRUSTED_CERTIFICATE: "${nginx_ssl_trusted_certificate}"
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates  # Custom Nginx configuration
+      - ./nginx/certs:/etc/nginx/certs  # Directory for custom certificates
+    ports:
+      - '443:443'
+    networks:
+      - thehive-cortex-network
+    depends_on:
+      - thehive
+      - cortex
+    labels:
+      com.strangebee.stack: "thehive-cortex-stack"
+      com.strangebee.service: "nginx"
+      com.strangebee.role: "reverse proxy"
+      com.strangebee.environment: "testing"
+      com.strangebee.version: "${nginx_image_version}"
+      com.strangebee.dependency: "thehive, cortex"
+
+
 networks:
   thehive-cortex-network:
