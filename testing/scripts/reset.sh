@@ -9,6 +9,22 @@ then
 
 
 
+  ## Delete folder contents
+  DIRECTORIES="./cassandra/data ./cassandra/logs  elasticsearch/data elasticsearch/logs  ./thehive/data/files ./thehive/logs ./cortex/logs"
+
+  for D in ${DIRECTORIES}
+  do
+    rm -rf ./${D}/*
+  done
+
+  ## DELETE secret.conf FILES
+  rm ./thehive/config/secret.conf
+  rm ./cortex/config/secret.conf
+  rm -rf ./cortex/config/application.conf.d
+
+  ## DELETE .env FILE
+  rm .env
+
   ## Restore permissions
   CURRENT_USER_ID=$(id -u)
   CURRENT_GROUP_ID=$(id -g)
@@ -26,21 +42,6 @@ then
 # find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
   fi
 
-  ## Delete folder contents
-  DIRECTORIES="./cassandra/data ./cassandra/logs  elasticsearch/data elasticsearch/logs  ./thehive/data/files ./thehive/logs ./cortex/logs"
-
-  for D in ${DIRECTORIES}
-  do
-    rm -rf ./${D}/*
-  done
-
-  ## DELETE secret.conf FILES
-  rm ./thehive/config/secret.conf
-  rm ./cortex/config/secret.conf
-  rm -rf ./cortex/config/application.conf.d
-
-  ## DELETE .env FILE
-  rm .env
 else
   exit 0
 fi
