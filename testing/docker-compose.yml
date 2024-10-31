@@ -28,6 +28,13 @@ services:
       interval: 2s
       timeout: 1s
       retries: 3
+    labels:
+      com.strangebee.stack: "thehive-cortex-stack"
+      com.strangebee.service: "cassandra"
+      com.strangebee.role: "database"
+      com.strangebee.environment: "testing"
+      com.strangebee.version: "${cassandra_image_version}"
+      com.strangebee.dependency: "None"
 
   elasticsearch:
     image: "elasticsearch:${elasticsearch_image_version}"
@@ -64,6 +71,13 @@ services:
       interval: 2s
       timeout: 1s
       retries: 5
+    labels:
+      com.strangebee.stack: "thehive-cortex-stack"
+      com.strangebee.service: "elasticsearch"
+      com.strangebee.role: "indexing"
+      com.strangebee.environment: "testing"
+      com.strangebee.version: "${elasticsearch_image_version}"
+      com.strangebee.dependency: "None"
 
   thehive:
     image: "strangebee/thehive:${thehive_image_version}"
@@ -100,6 +114,13 @@ services:
         condition: service_healthy
       cassandra:
         condition: service_healthy
+    labels:
+      com.strangebee.stack: "thehive-cortex-stack"
+      com.strangebee.service: "thehive"
+      com.strangebee.role: "application"
+      com.strangebee.environment: "testing"
+      com.strangebee.version: "${thehive_image_version}"
+      com.strangebee.dependency: "elasticsearch, cassandra"
 
   cortex:
     image: "thehiveproject/cortex:${cortex_image_version}"
@@ -139,6 +160,13 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
+    labels:
+      com.strangebee.stack: "thehive-cortex-stack"
+      com.strangebee.service: "cortex"
+      com.strangebee.role: "application"
+      com.strangebee.environment: "testing"
+      com.strangebee.version: "${cortex_image_version}"
+      com.strangebee.dependency: "elasticsearch"
 
 networks:
   thehive-cortex-network:
