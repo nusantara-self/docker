@@ -1,7 +1,8 @@
 #!/bin/bash
+source $(dirname $0)/output.sh
 
 ## This program ensures that all files and folders are owned by the current user and permissions are set accordingly to make everything run properly
-
+## This program is run by init.sh program
 
 CURRENT_USER_ID=$(id -u)
 CURRENT_GROUP_ID=$(id -g)
@@ -15,12 +16,12 @@ if [ -n "${UNEXPECTED_OWNERSHIP}" ];
 then
   echo "${UNEXPECTED_OWNERSHIP}" | while IFS= read -r line; do
     sudo chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} "${line}"
-    echo "* Ownership updated for ${line}"
+    success "Ownership updated for ${line}"
     done
   
-  [[ $? -ne 0 ]] && echo -n "
-* run this command with root privileges to complete the reset process: 
-# find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
+  [[ $? -ne 0 ]] &&\
+  info "Run this command with root privileges to complete the reset process:"
+  echo -n "# find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
 fi
 
 ## List non compliant dirs and files with 750/640
@@ -36,33 +37,34 @@ if [ -z "${NON_COMPLIANT_DIRS}" ] &&\
    [ -z "${NON_COMPLIANT_CORTEX_DIRS}" ]  &&\
    [ -z "${NON_COMPLIANT_CORTEX_FILES}" ]
 then
-  echo "All files and folders have expected permissions."
+  success "All files and folders have expected permissions."
   exit 0
 else
-  echo -n "
-* The following directories do not have expected permissions:
-${NON_COMPLIANT_DIRS}
+  warning "The following directories do not have expected permissions:"
+  echo -n "${NON_COMPLIANT_DIRS}
 ${NON_COMPLIANT_CORTEX_DIRS}
-  
-* The following files do not have expected permissions:
-${NON_COMPLIANT_FILES}
+" | sed '/^$/d' # strip empty lines
+
+  warning "The following files do not have expected permissions:"
+  echo -n "${NON_COMPLIANT_FILES}
 ${NON_COMPLIANT_CORTEX_FILES}
-  
-  " 
+" | sed '/^$/d' # strip empty lines
+
+  echo  " "
   read -p "Fix permissions ? (y/n): " choice
   if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
       # Apply 750 permissions to non-compliant directories
       if [ -n "${NON_COMPLIANT_DIRS}" ]; then
           echo "${NON_COMPLIANT_DIRS}" | while IFS= read -r dir; do
               chmod 750 "$dir"
-              echo "* Updated directory permissions for: $dir"
+              success "Updated directory permissions for: $dir"
           done
       fi
       # Apply 755 permissions to non-compliant Cortex directories
       if [ -n "${NON_COMPLIANT_CORTEX_DIRS}" ]; then
           echo "${NON_COMPLIANT_CORTEX_DIRS}" | while IFS= read -r dir; do
               chmod 755 "$dir"
-              echo "* Updated directory permissions for: $dir"
+              success "Updated directory permissions for: $dir"
           done
       fi
 
@@ -70,20 +72,20 @@ ${NON_COMPLIANT_CORTEX_FILES}
       if [ -n "${NON_COMPLIANT_FILES}" ]; then
           echo "${NON_COMPLIANT_FILES}" | while IFS= read -r file; do
               chmod 640 "$file"
-              echo "* Updated file permissions for: $file"
+              success "Updated file permissions for: $file"
           done
       fi
       # Apply 640 permissions to non-compliant Cortex files
       if [ -n "${NON_COMPLIANT_CORTEX_FILES}" ]; then
           echo "${NON_COMPLIANT_CORTEX_FILES}" | while IFS= read -r file; do
               chmod 644 "$file"
-              echo "* Updated file permissions for: $file"
+              success "Updated file permissions for: $file"
           done
       fi
 
-      echo "Permissions have been updated for files and directories."
+      success "Permissions have been updated for files and directories."
   else
-      echo "No changes made."
+      warning "No changes made."
       exit 1
   fi
 

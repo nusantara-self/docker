@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
-CORTEX_URL="http://127.0.0.1:9001"
+source $(dirname $0)/output.sh
+
+CORTEX_URL="https://127.0.0.1/cortex"
 
 set -e
 LOG_FILE=$(mktemp)
@@ -15,21 +17,21 @@ log() {
 }
 
 ok() {
-    echo "OK" >&2
+    success  "OK" >&2
 }
 
 ko() {
-    echo "KO" >&2
+    error "KO" >&2
 }
 
 if ! grep -Fxq "auth.method.basic = true" ./cortex/config/application.conf
 then
-  echo " updating configuration" 
+  info " Updating configuration" 
   cat >> ./cortex/config/application.conf << _EOF_
 auth.method.basic = true
 _EOF_
 
-  echo "restarting cortex" 
+  info "Restarting cortex" 
   docker compose restart cortex
 fi
 
@@ -39,15 +41,13 @@ check() {
     shift
     while true
     do
-      status_code=$(curl  "$@" -s -o /dev/stderr -w '%{http_code}' 2>>${LOG_FILE}) || true
+      status_code=$(curl -k "$@" -s -o /dev/stderr -w '%{http_code}' 2>>${LOG_FILE}) || true
       if [ "${status_code}" = "${expected}" ]
       then
-        ok
         break
       else
-        ko
-        echo "got ${status_code}, expected ${expected}" >&2
-        echo "see more detail in $LOG_FILE" >&2
+        error "got ${status_code}, expected ${expected}" >&2
+        error "see more detail in $LOG_FILE" >&2
         count=$((${count}+1))
         if [ ${count} = 40 ]
         then
@@ -62,19 +62,19 @@ check() {
 
 # Check service is alive
 check_service() {
-    echo "--- Checking if Cortex service is running"
+    info "Checking if Cortex service is running"
     sleep 10
     check 200 "$CORTEX_URL/index.html"
 }
 
 create_index() {
     # Create the index
-    echo "--- Creating Cortex index"
+    info "Creating Cortex index"
     check 204 -XPOST "$CORTEX_URL/api/maintenance/migrate"
 }
 
 create_superadmin() {
-    echo "--- Creating Cortex superadmin user"
+    info "Creating Cortex superadmin user"
     check 201 "$CORTEX_URL/api/user" -H 'Content-Type: application/json' -d '
             {
               "login" : "admin",
@@ -89,7 +89,7 @@ create_superadmin() {
 }
 
 create_demo_org() {
-    echo "--- Creating Cortex demo organization"
+    info "Creating Cortex demo organization"
     check 201 -u admin:thehive1234 "$CORTEX_URL/api/organization" -H 'Content-Type: application/json' -d '
         {
           "name": "demo",
@@ -98,7 +98,7 @@ create_demo_org() {
 }
 
 create_demo_thehive() {
-    echo "--- Creating thehive user"
+    info "Creating thehive user"
     check 201 -u admin:thehive1234 "$CORTEX_URL/api/user" -H 'Content-Type: application/json'  -d '
         {
           "login" : "thehive",
@@ -117,15 +117,14 @@ create_demo_thehive() {
 
 
 update_thehive_configuration() {
-    echo "--- Creating thehive api key"
-    key=$(curl -s -u admin:thehive1234 "$CORTEX_URL/api/user/thehive/key/renew" -d '')
+    info "Creating thehive api key"
+    key=$(curl -k -s -u admin:thehive1234 "$CORTEX_URL/api/user/thehive/key/renew" -d '')
     echo $key > /tmp/cortex_key
     check 200 "$CORTEX_URL/api/user/thehive" -H 'Content-Type: application/json' \
         -H "Authorization: Bearer $key"
 }
 
 activate_analyzer() {
-    echo "--- Activating $1"
     if [ "$2" ]
     then
       data="$2"
@@ -145,14 +144,14 @@ activate_analyzer() {
     fi
 
 
-    status_code=$(curl -s -u thehive:thehive1234 "$CORTEX_URL/api/organization/analyzer/$1" \
+    status_code=$(curl -k -s -u thehive:thehive1234 "$CORTEX_URL/api/organization/analyzer/$1" \
         -H 'Content-Type: application/json' -d "$data" -o /dev/null -w '%{http_code}' ) 
 
     if [ "${status_code}" = "201" ]
     then
-        ok
+        success "$1 activated"
     else
-        ko
+        error "Activating $1 failed"
     fi
 
     }

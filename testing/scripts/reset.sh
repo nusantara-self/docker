@@ -1,29 +1,39 @@
 #! /usr/bin/env bash
 
-read -p "This program will completely reset the application stack. All data will be lost. Continue ? (y/n): " choice
+## This program remove all data and delete all files created by init.sh script. Once executed successfully, the folder is clean with no data. 
+
+source $(dirname $0)/output.sh  # used to display output
+
+error "This action will completely reset the application stack. All data will be lost!"
+read -p "Continue ? (y/n): " choice
 
 if [[ "$choice" == "y" || "$choice" == "Y" ]]
 then
   ## Stop services
   docker compose down
 
-
-
   ## Delete folder contents
-  DIRECTORIES="./cassandra/data ./cassandra/logs  elasticsearch/data elasticsearch/logs  ./thehive/data/files ./thehive/logs ./cortex/logs"
+  DIRECTORIES="./cassandra/data ./cassandra/logs  ./elasticsearch/data ./elasticsearch/logs  ./thehive/data/files ./thehive/logs ./cortex/logs"
+
 
   for D in ${DIRECTORIES}
   do
-    rm -rf ./${D}/*
+    rm -rf ${D}/*
   done
+  success "All data removed."
 
   ## DELETE secret.conf FILES
   rm ./thehive/config/secret.conf
   rm ./cortex/config/secret.conf
-  rm -rf ./cortex/config/application.conf.d
+  success "secret files deleted."
+
+  ## DELETE cert files
+  rm -rf ./nginx/certs/*
+  success "Certificates deleted."
 
   ## DELETE .env FILE
   rm .env
+  success ".env file deleted."
 
   ## Restore permissions
   CURRENT_USER_ID=$(id -u)
@@ -34,13 +44,15 @@ then
   then
     echo "${UNEXPECTED_OWNERSHIP}" | while IFS= read -r line; do
       sudo chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} "${line}"
-      echo "* Ownership updated for ${line}"
+      success "Ownership updated for ${line}"
       done
     
-    [[ $? -ne 0 ]] && echo -n "
-!!! Run this command with root privileges to complete the reset process: 
-# find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
+    [[ $? -ne 0 ]] && info "Run this command with root privileges to complete the reset process:\n
+    # find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
   fi
+
+  rm -rf ./cortex/logs/*
+  success "Cortex logs removed"
 
 else
   exit 0

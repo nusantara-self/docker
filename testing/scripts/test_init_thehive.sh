@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
-THEHIVE_URL="http://127.0.0.1:9000"
+source $(dirname $0)/output.sh
+
+THEHIVE_URL="https://127.0.0.1/thehive"
 
 set -e
 LOG_FILE=$(mktemp)
@@ -28,15 +30,13 @@ check() {
   shift
   while true
   do
-    status_code=$(curl  "$@" -s -o /dev/stderr -w '%{http_code}' 2>>${LOG_FILE}) || true
+    status_code=$(curl -k "$@" -s -o /dev/stderr -w '%{http_code}' 2>>${LOG_FILE}) || true
     if [ "${status_code}" = "${expected}" ]
     then
-      ok
       break
     else
-      ko
-      echo "got ${status_code}, expected ${expected}" >&2
-      echo "retrying in few seconds..."
+      warning "got ${status_code}, expected ${expected}" >&2
+      warning "retrying in few seconds..."
       #echo "see more detail in $LOG_FILE" >&2
       count=$((${count}+1))
       if [ ${count} = 30 ]
@@ -53,28 +53,27 @@ check() {
 
 # Check service is alive
 check_service() {
-  echo "--- Checking if TheHive service is running"
-  check 200 "$THEHIVE_URL/api/v1/user/current" -u admin@thehive.local:secret 
+  check 200 "$THEHIVE_URL/api/v1/user/current" -u admin@thehive.local:secret &&\
+  info "TheHive service is running" || warning "TheHive is not started"
 }
 
 restart_services() {
-  echo "--- Restarting thehive"
-  sudo docker compose restart thehive && ok
+  info "Restarting thehive"
+  docker compose restart thehive && info "Restarting TheHive"
 }
 
 create_org() {
-  echo "--- Creating demo organisation"
   check 201 "$THEHIVE_URL/api/organisation" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
       "description" : "demo organisation",
       "name" : "demo" 
     }'
-}
+} && success "Demo organisation"
 
 
 create_orgadmin() {
-  echo "--- Creating TheHive orgadmin user"
-  ID=`curl -s -XPOST "$THEHIVE_URL/api/v1/user" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
+  info "Creating TheHive orgadmin user"
+  ID=`curl -k -s -XPOST "$THEHIVE_URL/api/v1/user" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
       "login" : "thehive@thehive.local",
       "name" : "thehive",
@@ -84,7 +83,7 @@ create_orgadmin() {
     }' | jq -r ._id` 
   
 
-  curl -s -XPUT "$THEHIVE_URL/api/v1/user/${ID}/organisations" -H 'Content-Type: application/json' -o /dev/stderr -u admin@thehive.local:secret -d '
+  curl -k -s -XPUT "$THEHIVE_URL/api/v1/user/${ID}/organisations" -H 'Content-Type: application/json' -o /dev/stderr -u admin@thehive.local:secret -d '
     {
       "organisations": [
         {
@@ -100,9 +99,8 @@ create_orgadmin() {
 }
 
 create_customfields() {
-  echo "--- Creating Custom fields"
+  info "Creating Custom fields"
 
-  echo "---- BusinessImpact"
   check 201 "$THEHIVE_URL/api/customField" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
     "name": "BusinessImpact",
@@ -116,9 +114,8 @@ create_customfields() {
         "Medium",
         "Low"
     ]
-  }'
+  }' && success "CF BusinessImpact created"
 
-  echo "---- BusinessUnit"
   check 201 "$THEHIVE_URL/api/customField" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
     "name": "BusinesUnit",
@@ -137,9 +134,8 @@ create_customfields() {
       "Procurement",
       "Legal"
     ]
-  }'
+  }' && success "CF BusinessUnit created"
 
-  echo "---- SLA"
   check 201 "$THEHIVE_URL/api/customField" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
     "name": "SLA",
@@ -153,9 +149,8 @@ create_customfields() {
         12,
         24
     ]
-  }'
+  }' && success "CF SLA created"
 
-  echo "---- Contact"
   check 201 "$THEHIVE_URL/api/customField" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
     "name": "Contact",
@@ -165,9 +160,9 @@ create_customfields() {
     "mandatory": false,
     "options": [
     ]
-  }'
+  }' && success "CF Contact created"
 
-  echo "---- Hits"
+
   check 201 "$THEHIVE_URL/api/customField" -H 'Content-Type: application/json' -u admin@thehive.local:secret -d '
     {
     "name": "Hits",
@@ -178,10 +173,10 @@ create_customfields() {
     "options": [
     ]
   }'
-}
+} && success "CF Hits created"
 
 create_case_template() {
-  echo "--- Creating case template"
+  info "Creating case template"
   check 201 "$THEHIVE_URL/api/v1/caseTemplate" -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d '
     {
     "name": "MISPEvent",
@@ -224,23 +219,22 @@ create_case_template() {
 }
 
 create_alert_observable() {
-  echo "---- Creating observable for Alert $1"
   ID=$1
   OBS=$2
   check 201 "${THEHIVE_URL}/api/v1/alert/${ID}/observable" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d "${OBS}"
-}
+} && success "Observable for Alert $1 created"
 
 create_case_observable() {
-  echo "---- Creating observable for Case $1"
+  
   ID=$1
   OBS=$2
   check 201 "${THEHIVE_URL}/api/v1/case/${ID}/observable" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d "${OBS}"
-}
+} && success "Observable for Case $1 created"
 
 
 create_alerts() {
-  echo "--- Creating Alert"
-  ID=`curl -s -XPOST "${THEHIVE_URL}/api/v1/alert" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d '
+  info " Creating Alert"
+  ID=`curl -k -s -XPOST "${THEHIVE_URL}/api/v1/alert" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d '
     {
       "caseTemplate": "MISPEvent",
       "customFields": [
@@ -310,8 +304,8 @@ create_alerts() {
 }
 
 create_case() {
-  echo "--- Creating Case"
-  ID=`curl -s -XPOST "${THEHIVE_URL}/api/v1/case" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d '
+  info " Creating Case"
+  ID=`curl -k -s -XPOST "${THEHIVE_URL}/api/v1/case" -H 'X-Organisation: demo' -H 'Content-Type: application/json' -u thehive@thehive.local:thehive1234 -d '
     {
       "customFields": [
             {
@@ -345,7 +339,7 @@ create_case() {
 
 
 add_cortex() {
-  echo "--- Configuring Cortex"
+  info " Configuring Cortex"
   key=`cat /tmp/cortex_key`
   check 204 -XPUT "$THEHIVE_URL/api/v1/admin/config/cortex" -H 'Content-Type: application/json' -H "X-Organisation: admin" -u admin@thehive.local:secret -d '{
   "statusCheckInterval": "1 minute",
@@ -355,7 +349,7 @@ add_cortex() {
   "servers": [
     {
       "name": "Cortex",
-      "url": "http://cortex:9001",
+      "url": "http://cortex:9001/cortex",
       "includedTheHiveOrganisations": [
         "*"
       ],
