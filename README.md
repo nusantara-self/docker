@@ -1,9 +1,26 @@
-# Docker compose for TheHive and Cortex
+# Docker Compose for TheHive and Cortex
 
 > **IMPORTANT** all files in the `testing` folder are meant for prototyping, they **MUST NOT** be used in production
 
-This repository contains a docker compose file used to setup TheHive and Cortex on a server for testing purpose.
-Later versions will include production-ready compose files to deploy these containers on separate instances.
+This repository contains a Docker Compose file used to setup TheHive and Cortex on a server for testing purpose.
+Later versions will include production-ready Docker Compose files to deploy these containers on separate instances.
+
+
+## Disclaimer
+
+This repository is designed to be a template and will require adjustments to suit your specific environment.
+In particular, you should review (and modify if needed):
+- Environment variables
+- Network configurations (to avoid conflicts with existing services)
+- Docker bind mounts (e.g. tweak location, add backups...)
+- Containers resources limits (to make containers fit inside your machine)
+- Service dependencies (make sure all services are properly configured and reachable)
+
+Failure to customize these files may lead to errors and crash in services or conflicts within your environment.
+Please consult the documentation and seek assistance if needed to make the necessary adjustments.
+
+By using this repository, you acknowledge that it is your responsibility to tailor configurations to your environment.
+Maintainers of this repository are not liable for any issue related to improper configurations.
 
 
 ## Requirements
@@ -14,65 +31,121 @@ Hardware requirements:
 
 Software requirements:
 - Docker engine `v23.0.15` and later ([install instructions](https://docs.docker.com/engine/install/))
-- Docker compose plugin `v2.20.2` and later ([install instructions](https://docs.docker.com/compose/install/))
+- Docker Compose plugin `v2.20.2` and later ([install instructions](https://docs.docker.com/compose/install/))
 
 To verify that everything is properly installed, you can do the following commands:
 ```bash
-# Check docker engine version
+# Check Docker engine version
 docker version
 
-# Check that the current user can run docker commands
+# Check that the current user can run Docker commands
 # Else (for Linux) check out https://docs.docker.com/engine/install/linux-postinstall/
 docker run hello-world
 
-# Check docker compose plugin version
+# Check Docker Compose plugin version
 docker compose version
 ```
 
 
 ## Configuration
+### Structure
 
-Each Compose file runs Elasticsearch, Cassandra and TheHive.
+The testing Docker Compose file is based on the following structure:
+```
+├── cassandra
+│   ├── data
+│   └── logs
+├── cortex
+│   ├── config
+│   ├── logs
+│   └── neurons
+├── docker-compose.yml
+├── dot.env.template
+├── elasticsearch
+│   ├── data
+│   └── logs
+└── thehive
+    ├── config
+    ├── data
+    └── logs
+```
 
-* *Elasticsearch* database and logs are stored in Docker volumes
-* *Cassandra* database and logs are stored in Docker volumes
-* *TheHive* configuration, attachments and logs files are stored in `./thehive` folder.
+Here are the main takeaways:
+- The `dot.env.template` defines important variables for the Docker Compose (see [Usage](./README.md#usage))
+- Every `config`, `data` and `logs` folder are synchronised with their associated container using [Docker bind mounts](https://docs.docker.com/engine/storage/bind-mounts/)
+    * Permission management of these folders is paramount to prevent errors (see [Permissions](./README.md#permissions))
+- Cortex is an exception with additional mountpoints:
+    * `/var/run/docker.sock` to allow Cortex access to the host's Docker daemon and launch containers
+    * `/tmp/cortex-jobs` (also in the command flags) for Cortex to store jobs
+
+
+### Permissions
+
+To simplify operations, we recommend to use the host's user in the containers (see [Usage](./README.md#usage)):
+- You should make sure that all `config`, `data` and `logs` folders are owned and writable by the host's user
+- In case of misconfiguration, end users may need to be sudoers to access / modify / remove data written by containers
 
 
 ## Usage
+### Quick start
 
-For testing purpose:
+> **NOTE** launched containers will listen on localhost by default, see [Exposing containers](./README.md#exposing-containers) for details
 
-1. Copy the content of the folder `testing` on your server,
+1. Copy the content of the folder `testing` on your server
 2. Run `bash ./scripts/init.sh` to generate .env file and prepare the environment
-3. Run:
+3. Launch all containers using
+```bash
+docker compose up -d
+```
 
-    ```bash
-    docker compose up
-    ```
+After a short while, containers should be running and healthy. Try the following links:
+- TheHive at `http://127.0.0.1:9000`
+- Cortex at `http://127.0.0.1:9001`
 
-First start will create volumes for:
+You can check the status of running containers with:
+```bash
+docker ps
+```
 
-* Elasticsearch database
-* Elasticsearch logs
-* Cassandra database
-* Cassandra logs
+To manage running containers, go in the folder with the `docker-compose.yml` and run:
+```bash
+# Start / stop containers
+docker compose start
+docker compose stop
 
-TheHive attachments files are stored in `./thehive/data/files/` and logs are stored in `./thehive/log/`.
+# Stop and remove containers and network
+docker compose down
+```
 
 
-## Disclaimer
+### Advanced configuration
+#### TheHive and Cortex
 
-**Important Notice**
-These compose files are designed to be templates and may require adjustments to suit your specific environment. The configuration and Docker Compose files provided in this repository are tailored to a general setup and should be modified to match your unique requirements and infrastructure.
+> **WARNING** changing the provided config can have unintended side-effects
 
-**Key Points to Consider**
-* **Environment Variables**: Ensure all environment variables are correctly set for your specific environment.
-* **Network Configuration**: Adjust network settings to avoid conflicts with existing services.
-* **Volume Mounts**: Modify volume mounts to point to appropriate directories on your host system.
-* **Resource Limits**: Review and adjust resource limits (CPU, memory) to align with your system capabilities.
-* **Service Dependencies**: Ensure that all dependent services and databases are properly configured and accessible.
+TheHive and Cortex can be customized by:
+- Modifying config files under `thehive/config` and `cortex/config` folders
+- Changing containers command at startup (e.g. [adding parameters](https://docs.strangebee.com/cortex/installation-and-configuration/run-cortex-with-docker/))
 
-Failure to customize these files may lead to improper functioning of the application or conflicts within your environment. Please consult the documentation and seek assistance if needed to make the necessary adjustments.
 
-By using this repository, you acknowledge that it is your responsibility to tailor the configuration to your environment. The maintainers of this repository are not liable for any issues arising from improper configuration.
+#### Exposing containers
+
+The setup to expose containers on a network can vary wildly depending on the context.
+It is recommended to use a [reverse proxy](https://docs.strangebee.com/thehive/configuration/ssl/) to forward requests from outside to containers in a secure way.
+While [exposing containers directly on the host's IP](https://docs.docker.com/engine/network/drivers/host/) is possible, it is not recommended for security reasons.
+
+
+#### Technical choices
+
+The Docker Compose file defines healthchecks for all containers. It is used to:
+- Make sure applications within containers are running properly
+- Create hard dependencies between services (e.g. TheHive needs Cassandra and ElasticSearch healthy to run properly)
+
+Containers resources are defined as follow:
+- Each container has access to 2GB of memory at most
+- Java environment variables are defined to fit within this amount of memory
+- Swap is disabled to prevent performance gaps
+
+Changing these values can improve the responsiveness of the services, but you should make sure that all connected variables are updated to reflect the change.
+
+Finally, we use [variable interpolation](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/) so that the Docker Compose file takes its variables from the `.env` file.
