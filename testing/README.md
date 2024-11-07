@@ -1,6 +1,8 @@
 # Docker compose for TheHive and Cortex
 
-> **IMPORTANT** all files in the `testing` folder are meant for prototyping, they **MUST NOT** be used in production
+> [!IMPORTANT]
+> all files in the `testing` folder are meant for prototyping, they **MUST NOT** be used in production
+
 
 This repository includes a docker compose file designed to set up TheHive and Cortex on a server for testing purposes. This version provides all necessary components to deploy both TheHive and Cortex on a single server.
 
@@ -55,7 +57,8 @@ cassandra
 * **./cassandra/data**: the database files
 * **./cassandra/logs**: the log files
 
-> **Note**: These folders should not be manually modified
+> [!NOTE]
+> These folders should not be manually modified
 
 #### Elasticsearch
 
@@ -68,7 +71,8 @@ elasticsearch
 * **./elasticsearch/data**: the database files
 * **./elasticsearch/logs**: the log files
 
-> **Note**: These folders should not be manually modified 
+> [!NOTE]
+> These folders should not be manually modified 
 
 #### TheHive
 
@@ -87,7 +91,8 @@ thehive
 * **./thehive/data/files**: file storage for TheHive
 * **./thehive/logs**: TheHive log files
 
-> **Note**: These folders should not be manually modified, except in `config` if you know what you are doing. 
+> [!NOTE]
+> These folders should not be manually modified, except in `config` if you know what you are doing. 
 
 #### Cortex
 
@@ -107,7 +112,8 @@ cortex
 * **./cortex/logs**: Cortex log files
 * **./cortex/neurons**: Folder dedicated to custom Analyzers and Responders
 
-> **Note**: These folders should not be manually modified, except in `config` if you know what you are doing.
+> [!NOTE]
+> These folders should not be manually modified, except in `config` if you know what you are doing.
 
 
 #### Nginx
@@ -121,7 +127,8 @@ nginx
 
 * **./nginx/templates/default.conf.template**: this file is used to initiate the configuration of Nginx when the container is initialised.
 
-> **Note**: These folders should not be manually modified.
+> [!NOTE]
+> These folders should not be manually modified.
 
 #### Certificates
 
