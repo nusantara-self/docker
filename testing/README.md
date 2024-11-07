@@ -1,10 +1,22 @@
 # Docker compose for TheHive and Cortex
 
+> [!CAUTION]
+> Please read all this documentation before starting.
+
 > [!IMPORTANT]
 > all files in the `testing` folder are meant for prototyping, they **MUST NOT** be used in production
 
 
 This repository includes a docker compose file designed to set up TheHive and Cortex on a server for testing purposes. This version provides all necessary components to deploy both TheHive and Cortex on a single server.
+
+- [Requirements](#requirements)
+- [Content of the application stack](#content-of-the-application-stack)
+- [First steps / Initialisation](#first-steps--initialisation)
+- [Run the application stack](#run-the-application-stack)
+- [Access to the applications](#access-to-the-applications)
+- [Additional content](#additional-content)
+
+---
 
 ## Requirements
 
