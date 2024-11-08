@@ -30,18 +30,6 @@ _EOF_
         warning "${THEHIVESECRETFILE} file already exists and has not been modified."
     fi
 
-    ## INIT CORTEX CONFIGURATION
-    CORTEXSECRETFILE="./cortex/config/secret.conf"
-    if [ ! -f ${CORTEXSECRETFILE} ] 
-    then
-        cat > ${CORTEXSECRETFILE} << _EOF_
-play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)" 
-_EOF_
-    else
-        STATUS=1
-        warning "${CORTEXSECRETFILE} file already exists and has not been modified."
-    fi
-
     ## CREATE .env FILE
     ENVFILE="./.env"
     if [ ! -f ${ENVFILE} ] 

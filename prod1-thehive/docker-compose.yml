@@ -8,17 +8,21 @@ services:
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
-      - HEAP_NEWSIZE=1280M
-      - MAX_HEAP_SIZE=200M
+      - HEAP_NEWSIZE=512M
+      # https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/operations/opsTuneJVM.html
+      # ¼ of MAX_HEAP_SIZE or 100 times the number of cores
+      - MAX_HEAP_SIZE=3G
+      # max(min(1/2 ram, 1024MB), min(1/4 ram, 8GB)
     volumes:
       - ./cassandra/data:/var/lib/cassandra
       - ./cassandra/logs:/var/log/cassandra
     deploy:
       resources:
         limits:
-          memory: 2G
+          memory: 4G
+          cpus: '3.000'
     # Prevent swap https://docs.docker.com/engine/containers/resource_constraints/#prevent-a-container-from-using-swap
-    memswap_limit: 2G
+    memswap_limit: 4G
     networks:
       - thehive-network
     healthcheck:
@@ -50,7 +54,7 @@ services:
       - thread_pool.write.queue_size=100000
       - bootstrap.memory_lock=true
       - xpack.security.enabled=false
-      - ES_JAVA_OPTS=-Xms1G -Xmx1G
+      - ES_JAVA_OPTS=-Xms3G -Xmx3G
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data
       - ./elasticsearch/logs:/usr/share/elasticsearch/logs
@@ -61,8 +65,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2G
-    memswap_limit: 2G
+          memory: 4G
+          cpus: '3.000'
+    memswap_limit: 4G
     networks:
       - thehive-network
     healthcheck:
@@ -87,9 +92,12 @@ services:
     command: '--no-config --no-config-secret'
     user: ${UID}:${GID}
     environment:
-      - MAX_HEAP_SIZE=1280M
-      - HEAP_NEWSIZE=1280M
-      - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
+      - |
+        JAVA_OPTS=
+          -Xms3000M
+          -Xmx3000M
+          -XX:MaxMetaspaceSize=400m
+          -XX:ReservedCodeCacheSize=400m
     volumes:
       - ./thehive/config:/etc/thehive
       - ./thehive/data/files:/opt/thp/thehive/files
@@ -97,8 +105,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2G
-    memswap_limit: 2G
+          memory: 4G
+          cpus: '4.000'
+    memswap_limit: 4G
     networks:
       - thehive-network
     ports:
@@ -137,6 +146,11 @@ services:
       - '443:443'
     networks:
       - thehive-network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '1.000'
     depends_on:
       - thehive
     labels:
