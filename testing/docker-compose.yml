@@ -87,11 +87,14 @@ services:
     command: '--no-config --no-config-secret'
     user: ${UID}:${GID}
     environment:
-      - MAX_HEAP_SIZE=1280M
-      - HEAP_NEWSIZE=1280M
-      - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
+      - |
+        JAVA_OPTS=
+          -Xms1280M
+          -Xmx1280M
+          -XX:MaxMetaspaceSize=400m
+          -XX:ReservedCodeCacheSize=250m
     volumes:
-      - ./thehive/config:/etc/thehive
+      - ./thehive/config:/etc/thehive:ro
       - ./thehive/data/files:/opt/thp/thehive/files
       - ./thehive/logs:/var/log/thehive
     deploy:
@@ -128,9 +131,12 @@ services:
     hostname: cortex
     restart: unless-stopped
     environment:
-      - MAX_HEAP_SIZE=1280M
-      - HEAP_NEWSIZE=1280M
-      - JAVA_OPTS=-Xms1000m -Xmx1000m -XX:MaxMetaspaceSize=450m -XX:ReservedCodeCacheSize=250m
+      - |
+        JAVA_OPTS=
+          -Xms1000M
+          -Xmx1000M
+          -XX:MaxMetaspaceSize=400m
+          -XX:ReservedCodeCacheSize=250m
       - es_uri=http://elasticsearch:9200
       - job_directory=/tmp/cortex-jobs
       - docker_job_directory=${cortex_docker_job_directory}
@@ -183,6 +189,11 @@ services:
       - '443:443'
     networks:
       - thehive-cortex-network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '1.000'
     depends_on:
       - thehive
       - cortex
