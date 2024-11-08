@@ -159,7 +159,7 @@ bash ./scripts/init.sh
 This script wil perform following actions: 
 
 * Prompts for a service name to include in the Nginx server certificate.
-* Initializes the `secret.conf` files for TheHive and Cortex.
+* Initializes the `secret.conf` files for TheHive.
 * Generates self-signed certificate none is found in `./certificates`
 * Creates a `.env` file will user/group information and other application settings
 * Verifies file and folder permissions.
