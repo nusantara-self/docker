@@ -232,7 +232,10 @@ Run the following script to delete all data in the *testing* environment:
 bash ./scripts/reset.sh
 ```
 
-This scripts delete all data and containers. Run the *init.sh* script to reload a new *testing* instance. 
+> [!CAUTION]
+> This scripts deletes all data and containers. 
+
+Run the *init.sh* script to reload a new *production* instance. 
  
 
 ### Demo data
