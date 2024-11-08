@@ -8,6 +8,7 @@ services:
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
+      - CASSANDRA_NUM_TOKENS=1
       - HEAP_NEWSIZE=1280M
       - MAX_HEAP_SIZE=200M
     volumes:
