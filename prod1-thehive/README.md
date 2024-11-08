@@ -1,3 +1,7 @@
+> [!CAUTION]
+> Please read all this documentation before starting.
+
+
 # Single server deployment optimized for TheHive
 
 ## Requirements
