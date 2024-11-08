@@ -1,9 +1,16 @@
-# Docker Compose for TheHive and Cortex
+# Docker Compose environments for TheHive and Cortex
 
-> **IMPORTANT** all files in the `testing` folder are meant for prototyping, they **MUST NOT** be used in production
+>[!IMPORTANT]
+> This repository contains Docker Compose files and additional materials to run TheHive and Cortex on testing and production servers. 
 
-This repository contains a Docker Compose file used to setup TheHive and Cortex on a server for testing purpose.
-Later versions will include production-ready Docker Compose files to deploy these containers on separate instances.
+
+This repository proposes several types of deployements, for production and testing purpose: 
+
+- [Testing environment](./testing/): TheHive and Cortex on a sigle server for testing purpose. Requires at least 8 GB of RAM and 4 vCPU
+- [Production environment #1 - TheHive](./prod1-thehive/): 1 server for TheHive, with 4vCPU and 16GB of RAM.
+- [Production environment #1 - Cortex](./prod1-cortex): 1 server for Cortex, with 4vCPU and 16GB of RAM.
+- [Production environment #2 - TheHive](./prod2-thehive): 1 server for TheHive, with 8vCPU and 32GB of RAM.
+- [Production environment #2 - Cortex](./prod2-cortex): 1 server for Cortex, with 8vCPU and 32GB of RAM.
 
 
 ## Disclaimer
