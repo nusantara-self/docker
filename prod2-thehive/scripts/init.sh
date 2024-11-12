@@ -36,7 +36,7 @@ _EOF_
     then
         CURRENT_USER_ID=$(id -u)
         CURRENT_GROUP_ID=$(id -g)
-        cp dot.env.template .env
+        cat ../versions.env dot.env.template > .env
         define_hostname # Ask user for service hostname
         check_user_certificates ${SYSTEM_HOSTNAME}
         # bash $(dirname $0)/generate_certs.sh ${SYSTEM_HOSTNAME} # Generate Nginx self-signed certificates if no certificate is installed.
