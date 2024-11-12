@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-## This program initialisa and configure Cortex and TheHive, with sample data. This allows to check everything works fine. 
+## This program initialise and configure Cortex and TheHive with sample data. This allows to check that everything works fine.
 ## Reset the application stack by running the command: bash ./scripts/reset.sh
 
 source $(dirname $0)/output.sh
@@ -10,14 +10,14 @@ info "Initializing Cortex"
 bash $(dirname $0)/test_init_cortex.sh
 
 ## initialize TheHive
-info "Initializing TheHive" 
+info "Initializing TheHive"
 bash $(dirname $0)/test_init_thehive.sh
 
 ## System hostname
 SYSTEM_HOSTNAME=$(uname -n)
 
 REPORT="
-Cortex has been initialized with following accounts: 
+Cortex has been initialized with following accounts:
 
 * Cortex URL: https://${SYSTEM_HOSTNAME}/cortex
 * Administrator:
@@ -29,7 +29,7 @@ Cortex has been initialized with following accounts:
   Password: thehive1234
 
 
-TheHive has been initialized with following accounts: 
+TheHive has been initialized with following accounts:
 
 * TheHive URL: https://${SYSTEM_HOSTNAME}/thehive
 * Administrator:

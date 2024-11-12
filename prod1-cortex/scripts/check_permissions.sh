@@ -8,7 +8,7 @@ CURRENT_USER_ID=$(id -u)
 CURRENT_GROUP_ID=$(id -g)
 
 
-## Ensure permissions are weel set
+## Ensure permissions are well set
 ## Restore permissions
 UNEXPECTED_OWNERSHIP=$(find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID})
 
@@ -18,7 +18,7 @@ then
     sudo chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} "${line}"
     success "Ownership updated for ${line}"
     done
-  
+
   [[ $? -ne 0 ]] &&\
   info "Run this command with root privileges to complete the reset process:"
   echo -n "# find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
