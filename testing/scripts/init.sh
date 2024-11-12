@@ -1,10 +1,10 @@
 #!/bin/bash
 
-## This scripts should be run from the directory containing the file `docker-compose.yml` with the following command: 
-##  bash ./scipts/init.sh
+## This scripts should be run from the directory containing the file `docker-compose.yml` with the following command:
+##  bash ./scripts/init.sh
 
 source $(dirname $0)/output.sh         # Used to display output
-source $(dirname $0)/generate_certs.sh # Used to generate self signed or custom certificate  
+source $(dirname $0)/generate_certs.sh # Used to generate self signed or custom certificate
 
 
 STATUS=0
@@ -20,7 +20,7 @@ SERVICE_HOSTNAME=${choice:-${SYSTEM_HOSTNAME}}
 init() {
     ## INIT THEHIVE CONFIGURATION
     THEHIVESECRETFILE="./thehive/config/secret.conf"
-    if [ ! -f ${THEHIVESECRETFILE} ] 
+    if [ ! -f ${THEHIVESECRETFILE} ]
     then
         cat > ${THEHIVESECRETFILE} << _EOF_
 play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
@@ -32,10 +32,10 @@ _EOF_
 
     ## INIT CORTEX CONFIGURATION
     CORTEXSECRETFILE="./cortex/config/secret.conf"
-    if [ ! -f ${CORTEXSECRETFILE} ] 
+    if [ ! -f ${CORTEXSECRETFILE} ]
     then
         cat > ${CORTEXSECRETFILE} << _EOF_
-play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)" 
+play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
 _EOF_
     else
         STATUS=1
@@ -44,7 +44,7 @@ _EOF_
 
     ## CREATE .env FILE
     ENVFILE="./.env"
-    if [ ! -f ${ENVFILE} ] 
+    if [ ! -f ${ENVFILE} ]
     then
         CURRENT_USER_ID=$(id -u)
         CURRENT_GROUP_ID=$(id -g)
@@ -87,6 +87,5 @@ then
     init
     success "Environment initialized successfully. Run `docker compose up` to start the application stack."
 else
-    error "Initialisation did not complete due to permissions issue. Please run ./scripts/check_permissions.sh to check" 
+    error "Initialisation did not complete due to permissions issue. Please run ./scripts/check_permissions.sh to check"
 fi
-
