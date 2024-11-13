@@ -165,7 +165,7 @@ update_thehive_configuration
 activate_analyzer Abuse_Finder_3_0
 activate_analyzer CIRCLHashlookup_1_1
 activate_analyzer CyberCrime-Tracker_1_0
-activate_analyzer DomainMailSPFDMARC_Analyzer_1_1
+activate_analyzer DomainMailSPFDMARC_1_1
 activate_analyzer DShield_lookup_1_0
 activate_analyzer FileInfo_8_0 '{ 
   "name": "FileInfo_8_0",
