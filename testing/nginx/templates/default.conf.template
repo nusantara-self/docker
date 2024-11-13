@@ -1,6 +1,7 @@
 server {
-    listen 443 ssl http2;
-    server_name ${SERVER_NAME:-localhost}; 
+    listen 443 ssl;
+    http2 on;
+    server_name ${SERVER_NAME:-localhost};
 
     ssl_certificate /etc/nginx/certs/server.crt;  # Custom certificate path
     ssl_certificate_key /etc/nginx/certs/server.key;  # Custom key path

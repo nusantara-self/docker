@@ -24,18 +24,22 @@ then
   echo -n "# find . ! -user ${CURRENT_USER_ID} -o ! -group ${CURRENT_GROUP_ID} -exec chown ${CURRENT_USER_ID}:${CURRENT_GROUP_ID} {} \; "
 fi
 
-## List non compliant dirs and files with 750/640
-NON_COMPLIANT_DIRS=$(find ./scripts -type d ! -perm 750)
-NON_COMPLIANT_FILES=$(find ./docker-compose.yml ./dot.env.template ./elasticsearch ./scripts -type f ! -perm 640)
+## List directories with unexpected permissions (should be 750)
+NON_COMPLIANT_DIRS=$(find ./certificates ./elasticsearch ./nginx ./scripts -type d ! -perm 750)
 
-## List non compliant dirs and files for Cortex (755/644)
+## Check Cortex directory for unexpected permissions (should be 755)
 NON_COMPLIANT_CORTEX_DIRS=$(find ./cortex -type d ! -perm 755)
-NON_COMPLIANT_CORTEX_FILES=$(find ./cortex -type f ! -perm 644)
+
+## List non-executable files with unexpected permissions (should be 644)
+NON_COMPLIANT_FILES=$(find ./docker-compose.yml ./dot.env.template ./certificates ./cortex ./elasticsearch ./nginx -type f ! -perm 644)
+
+## List executable files with unexpected permissions (should be 755)
+NON_COMPLIANT_EXECUTABLE_FILES=$(find ./scripts -type f ! -perm 755)
 
 if [ -z "${NON_COMPLIANT_DIRS}" ] &&\
-   [ -z "${NON_COMPLIANT_FILES}" ]  &&\
-   [ -z "${NON_COMPLIANT_CORTEX_DIRS}" ]  &&\
-   [ -z "${NON_COMPLIANT_CORTEX_FILES}" ]
+   [ -z "${NON_COMPLIANT_CORTEX_DIRS}" ] &&\
+   [ -z "${NON_COMPLIANT_FILES}" ] &&\
+   [ -z "${NON_COMPLIANT_EXECUTABLE_FILES}" ]
 then
   success "All files and folders have expected permissions."
   exit 0
@@ -47,7 +51,7 @@ ${NON_COMPLIANT_CORTEX_DIRS}
 
   warning "The following files do not have expected permissions:"
   echo -n "${NON_COMPLIANT_FILES}
-${NON_COMPLIANT_CORTEX_FILES}
+${NON_COMPLIANT_EXECUTABLE_FILES}
 " | sed '/^$/d' # strip empty lines
 
   echo  " "
@@ -68,17 +72,17 @@ ${NON_COMPLIANT_CORTEX_FILES}
           done
       fi
 
-      # Apply 640 permissions to non-compliant files
+      # Apply 644 permissions to non-compliant files
       if [ -n "${NON_COMPLIANT_FILES}" ]; then
           echo "${NON_COMPLIANT_FILES}" | while IFS= read -r file; do
-              chmod 640 "$file"
+              chmod 644 "$file"
               success "Updated file permissions for: $file"
           done
       fi
-      # Apply 640 permissions to non-compliant Cortex files
-      if [ -n "${NON_COMPLIANT_CORTEX_FILES}" ]; then
-          echo "${NON_COMPLIANT_CORTEX_FILES}" | while IFS= read -r file; do
-              chmod 644 "$file"
+      # Apply 755 permissions to non-compliant executable files
+      if [ -n "${NON_COMPLIANT_EXECUTABLE_FILES}" ]; then
+          echo "${NON_COMPLIANT_EXECUTABLE_FILES}" | while IFS= read -r file; do
+              chmod 755 "$file"
               success "Updated file permissions for: $file"
           done
       fi
