@@ -13,3 +13,13 @@ This repository offers various Docker Compose profiles to set up TheHive and Cor
 - [Production environment #1 - Cortex](./prod1-cortex): Single server deployment optimized for Cortex. Requirements: 16 GB RAM, 4 vCPU.
 - [Production environment #2 - TheHive](./prod2-thehive): High-performance deployment for TheHive on a dedicated server. Requirements: 32 GB RAM, 8 vCPU.
 - [Production environment #2 - Cortex](./prod2-cortex): High-performance deployment for Cortex on a dedicated server. Requirements: 32 GB RAM, 8 vCPU.
+
+
+## Software requirements
+
+These Docker Compose profiles include scripts to help you manage and optimize various resources and settings. To ensure a smooth experience with these applications, please ensure the following software is installed on the host system:
+
+- Docker engine `v23.0.15` and later ([install instructions](https://docs.docker.com/engine/install/))
+- Docker compose plugin `v2.20.2` and later ([install instructions](https://docs.docker.com/compose/install/))
+- jq [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/)
+- Current user should have at least sudo permissions 
