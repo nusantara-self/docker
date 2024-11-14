@@ -29,8 +29,8 @@ then
     cp ${USER_CERT_DIR}/server.crt ${USER_CERT_DIR}/server.key ${USER_CERT_DIR}/ca.pem ${NGINX_CERT_DIR}
     export NGINX_SSL_TRUSTED_CERTIFICATE_CONFIG="ssl_trusted_certificate /etc/nginx/certs/ca.pem;"  # Configuration added to nginx if using custom certificate and authority
 else
-    info "No custom certificates found."
-    info "If you wan't to provide your custom certificate for the Reverse Proxy, please copy the following files in the ./certificates directory:
+    info "No custom certificate found."
+    info "If you want to provide your custom certificate for the Reverse Proxy, please copy the following files in the ./certificates directory:
     * ${USER_CERT_DIR}/server.crt 
     * ${USER_CERT_DIR}/server.key
     * ${USER_CERT_DIR}/ca.pem
