@@ -8,7 +8,7 @@ services:
     environment:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
-      - CASSANDRA_NUM_TOKENS=1
+      - CASSANDRA_NUM_TOKENS=4
       - HEAP_NEWSIZE=512M
       # https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/operations/opsTuneJVM.html
       # ¼ of MAX_HEAP_SIZE or 100 times the number of cores
