@@ -77,7 +77,7 @@ services:
     # ports:
     #   - '0.0.0.0:9001:9001'
     healthcheck:
-      test: ["CMD-SHELL", "curl -s -f cortex:9001/api/status || exit 1"]
+      test: ["CMD-SHELL", "curl -s -f cortex:9001/cortex/api/status || exit 1"]
       start_period: 40s
       interval: 10s
       timeout: 1s
