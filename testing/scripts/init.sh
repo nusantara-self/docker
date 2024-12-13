@@ -23,7 +23,7 @@ init() {
     if [ ! -f ${THEHIVESECRETFILE} ]
     then
         cat > ${THEHIVESECRETFILE} << _EOF_
-play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
+play.http.secret.key="$(cat /dev/urandom | LC_CTYPE=C tr -dc '[:alnum:]' | fold -w 64 | head -n 1)"
 _EOF_
     else
         STATUS=1
@@ -35,7 +35,7 @@ _EOF_
     if [ ! -f ${CORTEXSECRETFILE} ]
     then
         cat > ${CORTEXSECRETFILE} << _EOF_
-play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
+play.http.secret.key="$(cat /dev/urandom | LC_CTYPE=C tr -dc '[:alnum:]' | fold -w 64 | head -n 1)"
 _EOF_
     else
         STATUS=1
