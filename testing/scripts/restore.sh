@@ -38,37 +38,67 @@
 ## additional information: https://docs.strangebee.com/thehive/operations/backup-restore/
 ##
 ## WARNING:
-## - This script ensure Nginx, Elasticsearch, Cassandra, Cortex and TheHive services are stopped before performing the restore, and then restarts the services.
+## - This script ensure Nginx, Elasticsearch, Cassandra, and TheHive services are stopped before performing the restore, and then restarts the services.
 ## - This script will overwrite existing data. Use it with caution.
 ## - Do not modify the rest of the script unless necessary.
 ##
 ## ============================================================
-
-
-## ============================================================
-## USER-CONFIGURABLE VARIABLES
-## ============================================================
-##
-## Update the following variables to match your environment
-## Path to the docker-compose.yml file
-DOCKER_COMPOSE_PATH="./"
-## Path to backup folder
-BACKUP_ROOT_FOLDER="./backup"
-## Name of the folder containing the backup to restore
-## TBD: read backups from the folder and ask the basckup to restore amongst last 10
-BACKUP_TO_RESTORE="14122024-1044-0000"
-## ============================================================
 ## DO NOT MODIFY ANYTHING BELOW THIS LINE
 ## ============================================================
+# Display help message
+if [[ "$1" == "--help" || "$1" == "-h" ]]
+then
+  echo "Usage: $0 [DOCKER_COMPOSE_PATH] [BACKUP_FOLDER]"
+  echo
+  echo "This script restores a backup of application data, including configurations, files, and logs."
+  echo
+  echo "Options:"
+  echo "  DOCKER_COMPOSE_PATH  Optional. Specify the path of the folder with the docker-compose.yml."
+  echo "                      If not provided, you will be prompted for a folder, with a default of '.'."
+  echo "  BACKUP_FOLDER  Optional. Specify the folder containing the data to restore."
+  echo "                      If not provided, you will be prompted for a folder or exit; no default folder is used."
+  echo
+  echo "Examples:"
+  echo "  $0 /path/to/docker-compose-folder /path/to/backup-folder  restores backup stored in the specified folder."
+  echo "  $0                 Prompt for docker compose folder and backup folder to restore."
+  exit 0
+fi
 
-# Check backup backup folder exists
-BACKUP_FOLDER="${BACKUP_ROOT_FOLDER}/${BACKUP_TO_RESTORE}"
-[[ -d ${BACKUP_FOLDER} ]] || { echo "Backup folder not found"; exit 1; }
+## Checks if the first argument is provided.
+## If it is, the script uses it as the value for BACKUP_ROOT_FOLDER
+## If no argument is passed, the script prompts the user to enter a value
+## 
+if [[ -z "$1" ]]
+then
+  read -p "Enter the folder path including your docker compose file [default: ./]: " DOCKER_COMPOSE_PATH
+  DOCKER_COMPOSE_PATH=${DOCKER_COMPOSE_PATH:-"."}
+else
+  DOCKER_COMPOSE_PATH="$1"
+fi
+
+if [[ -e "${DOCKER_COMPOSE_PATH}/docker-compose.yml" ]]
+then
+  echo "Path to your docker compose file: ${DOCKER_COMPOSE_PATH}/docker-compose.yml"
+else
+  { echo "Docker compose file not found in ${DOCKER_COMPOSE_PATH}"; exit 1; }
+fi
 
 
-# Define the log file and start logging
+if [[ -z "$2" ]]
+then
+  read -p "Enter the backup root folder [default: None]: " BACKUP_FOLDER
+  [[ -z "${BACKUP_FOLDER}" ]] && echo "No backup folder specified, exiting." && exit 1
+else
+  BACKUP_FOLDER="$2"
+fi
+
+## Check if the backup folder to restore exists, else exit
+[[ -d ${BACKUP_FOLDER} ]] || { echo "Backup folder not found, exiting"; exit 1; }
+
+
+# Define the log file and start logging. Log file is stored in the current folder
 DATE="$(date +"%Y%m%d-%H%M%z" | sed 's/+/-/')"
-LOG_FILE="${BACKUP_ROOT_FOLDER}/restore_log_${DATE}.log"
+LOG_FILE="./restore_log_${DATE}.log"
 exec &> >(tee -a "$LOG_FILE")
 
 # Log the start time

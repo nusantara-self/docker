@@ -36,32 +36,68 @@
 ## additional information: https://docs.strangebee.com/thehive/operations/backup-restore/
 ##
 ## WARNING:
-## - This script stops Nginx, Elasticsearch, Cassandra, Cortex and TheHive services, 
+## - This script stops Nginx, Elasticsearch, Cassandra, and TheHive services, 
 ##   performs the backup, and then restarts the services.
 ## - Do not modify the rest of the script unless necessary.
 ##
 ## ============================================================
-
-
-## ============================================================
-## USER-CONFIGURABLE VARIABLES
-## ============================================================
-##
-## Update the following variables to match your environment
-## Path to the docker-compose.yml file
-DOCKER_COMPOSE_PATH="./"
-## Root folder for storing backups
-BACKUP_ROOT_FOLDER="./backup"
-## ============================================================
 ## DO NOT MODIFY ANYTHING BELOW THIS LINE
 ## ============================================================
+
+# Display help message
+if [[ "$1" == "--help" || "$1" == "-h" ]]
+then
+  echo "Usage: $0 [BACKUP_ROOT_FOLDER]"
+  echo
+  echo "This script performs a backup of application data, including configurations, files, and logs."
+  echo
+  echo "Options:"
+  echo "  DOCKER_COMPOSE_PATH  Optional. Specify the path of the folder with the docker-compose.yml."
+  echo "                      If not provided, you will be prompted for a folder, with a default of '.'."
+  echo "  BACKUP_ROOT_FOLDER  Optional. Specify the root folder where backups will be stored."
+  echo "                      If not provided, you will be prompted for a folder, with a default of './backup'."
+  echo
+  echo "Examples:"
+  echo "  $0 /path/to/docker-compose-folder /path/to/backup  Perform backup with specified root folder."
+  echo "  $0                 Prompt for docker compose folder and backup root folder."
+  exit 0
+fi
+
+## Checks if the first argument is provided.
+## If it is, the script uses it as the value for BACKUP_ROOT_FOLDER
+## If no argument is passed, the script prompts the user to enter a value
+## 
+if [[ -z "$1" ]]
+then
+  read -p "Enter the folder path including your docker compose file [default: ./]: " DOCKER_COMPOSE_PATH
+  DOCKER_COMPOSE_PATH=${DOCKER_COMPOSE_PATH:-"."}
+else
+  DOCKER_COMPOSE_PATH="$1"
+fi
+
+if [[ -e "${DOCKER_COMPOSE_PATH}/docker-compose.yml" ]]
+then
+  echo "Path to your docker compose file: ${DOCKER_COMPOSE_PATH}/docker-compose.yml"
+else
+  { echo "Docker compose file not found in ${DOCKER_COMPOSE_PATH}"; exit 1; }
+fi
+
+
+if [[ -z "$2" ]]
+then
+  read -p "Enter the backup root folder [default: ./backup]: " BACKUP_ROOT_FOLDER
+  BACKUP_ROOT_FOLDER=${BACKUP_ROOT_FOLDER:-"./backup"}
+else
+  BACKUP_ROOT_FOLDER="$2"
+fi
+
 
 DATE="$(date +"%Y%m%d-%H%M%z" | sed 's/+/-/')"
 BACKUP_FOLDER="${BACKUP_ROOT_FOLDER}/${DATE}"
 
 
 ## Stop services
-docker compose stop
+docker compose -f ${DOCKER_COMPOSE_PATH}/docker-compose.yml stop
 
 ## Create the backup directory
 mkdir -p "${BACKUP_FOLDER}"  || { echo "Creating backup folder failed"; exit 1; }
@@ -74,7 +110,7 @@ exec &> >(tee -a "$LOG_FILE")
 
 
 ## Prepare folders tree
-mkdir -p ${BACKUP_FOLDER}/{thehive,cassandra,elasticsearch,nginx,certificates}
+mkdir -p ${BACKUP_FOLDER}/{thehive,cortex,cassandra,elasticsearch,nginx,certificates}
 echo "Created folder structure under ${BACKUP_FOLDER}"
 
 ## Copy TheHive data
