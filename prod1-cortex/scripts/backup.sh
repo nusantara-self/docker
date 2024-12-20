@@ -47,7 +47,7 @@
 # Display help message
 if [[ "$1" == "--help" || "$1" == "-h" ]]
 then
-  echo "Usage: $0 [BACKUP_ROOT_FOLDER]"
+  echo "Usage: $0 [DOCKER_COMPOSE_PATH] [BACKUP_ROOT_FOLDER]"
   echo
   echo "This script performs a backup of application data, including configurations, files, and logs."
   echo
