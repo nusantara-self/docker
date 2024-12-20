@@ -131,6 +131,6 @@ rsync -a ${BACKUP_FOLDER}/certificates/ ${DOCKER_COMPOSE_PATH}/certificates  ||
 
 ## Restart services
 echo "Restarting services..."
-docker compose up -d
+docker compose up -d -f ${DOCKER_COMPOSE_PATH}/docker-compose.yml
 
 echo "Restoration process completed at: $(date)"
