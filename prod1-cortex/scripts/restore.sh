@@ -65,7 +65,7 @@ then
 fi
 
 ## Checks if the first argument is provided.
-## If it is, the script uses it as the value for BACKUP_ROOT_FOLDER
+## If it is, the script uses it as the value for DOCKER_COMPOSE_PATH
 ## If no argument is passed, the script prompts the user to enter a value
 ## 
 if [[ -z "$1" ]]
