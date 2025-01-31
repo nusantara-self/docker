@@ -11,7 +11,7 @@
 /*/elasticsearch/logs/*
 
 # Ignore folders used as docker bind by TheHive container
-/*/thehive/data/*
+/*/thehive/data/files/*
 /*/thehive/logs/*
 
 # Ignore custom configuration files for TheHive
