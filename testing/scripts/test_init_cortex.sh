@@ -193,14 +193,12 @@ activate_analyzer EmlParser_2_1 '{
   },
   "jobCache": 0
 }'
-activate_analyzer Fortiguard_URLCategory_2_1
 activate_analyzer GoogleDNS_resolve_1_0_0
 activate_analyzer Inoitsu_1_0
 activate_analyzer MaxMind_GeoIP_4_0
 activate_analyzer Maltiverse_Report_1_0
 activate_analyzer StopForumSpam_1_0
 activate_analyzer TeamCymruMHR_1_0
-activate_analyzer Threatcrowd_1_0
 activate_analyzer UnshortenLink_1_2
 activate_analyzer URLhaus_2_0
 activate_analyzer Urlscan_io_Search_0_1_1
